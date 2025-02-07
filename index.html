@@ -6,7 +6,7 @@
     <meta name="description" content="Anime Club Webseite">
     <title>Anime Club Webseite</title>
     <style>
-        /*<!-- Button Links -->*/
+        /* Allgemeine Stile */
         body {
             display: flex;
             flex-direction: column;
@@ -19,42 +19,7 @@
             text-align: center;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Abstand zwischen den Buttons */
-            margin-top: 20px;
-        }
-
-        .button {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        /*<!-- Navigation Menu -->*/
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
+        /* Navigation Menu */
         .navbar {
             position: absolute;
             top: 0;
@@ -109,6 +74,42 @@
         .menu-container:hover .dropdown,
         .menu-container.active .dropdown {
             display: block;
+        }
+
+        /* Unsichtbarer Bereich zwischen Icon und Dropdown */
+        .menu-container:hover::after {
+            content: '';
+            position: absolute;
+            top: 20px; /* Unterhalb des Icons */
+            right: 0;
+            width: 100%;
+            height: 10px; /* Unsichtbarer Abstand */
+            background: transparent;
+        }
+
+        /* Button Links */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Abstand zwischen den Buttons */
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
         }
     </style>
     <script>
