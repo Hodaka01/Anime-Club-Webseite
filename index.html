@@ -62,6 +62,10 @@
             padding: 10px 20px;
         }
 
+        .menu-container {
+            position: relative;
+        }
+
         .menu-icon {
             display: flex;
             flex-direction: column;
@@ -82,7 +86,7 @@
             display: none;
             position: absolute;
             top: 40px;
-            right: 10px;
+            right: 0;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -102,8 +106,7 @@
             background-color: #f4f4f4;
         }
 
-        .menu-icon:hover + .dropdown,
-        .menu-icon:focus + .dropdown {
+        .menu-container:hover .dropdown {
             display: block;
         }
     </style>
@@ -114,12 +117,10 @@
         <div class="menu-icon" tabindex="0">
             <div></div>
             <div></div>
-            <div></div>
         </div>
         <div class="dropdown">
             <a href="#home">Home</a>
-            <a href="#about">Über Uns</a>
-            <a href="#contact">Kontakt</a>
+            <a href="#about">Mitglieder</a>
         </div>
     </div>
 
