@@ -6,24 +6,23 @@
     <meta name="description" content="Anime Club Webseite">
     <title>Anime Club Webseite</title>
     <style>
-        .center-text {
-            text-align: center;
-        }
-
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         .button-container {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            justify-content: center;
+            gap: 20px; /* Abstand zwischen den Buttons */
+            margin-top: 20px;
         }
 
         .button {
@@ -45,12 +44,13 @@
     </style>
 </head>
 <body>
-    <h1 class="center-text">Anime Club Webseite</h1>
-    <h2 class="center-text">Hallo Clubmitglieder!</h2>
+    <h1>Anime Club Webseite</h1>
+    <h2>Hallo Clubmitglieder!</h2>
     <p>Dies ist unsere Anime Club Webseite!</p>
-    <p><div class="button-container">
+
+    <div class="button-container">
         <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.d6pnuaaoc7b6" class="button">Regeln</a>
-        <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.0">Historie</a>
-    </div></p>
+        <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.0" class="button">Historie</a>
+    </div>
 </body>
 </html>
