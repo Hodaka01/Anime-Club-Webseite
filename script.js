@@ -62,24 +62,31 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDateDisplay();
 
     // 📌 Menü-Icon: Dropdown-Menü anzeigen/verstecken
-    menuContainer.addEventListener("click", function () {
-        menuContainer.classList.toggle("show");
-    });
-
-    // 📌 Menü bleibt sichtbar, wenn man mit der Maus darüber bleibt
-    menuContainer.addEventListener("mouseenter", function () {
-        menuContainer.classList.add("show");
-    });
-
-    menuContainer.addEventListener("mouseleave", function () {
-        menuContainer.classList.remove("show");
-    });
-
-    // 📌 Menü schließt, wenn man irgendwo anders klickt
-    document.addEventListener("click", function (event) {
-        if (!menuContainer.contains(event.target)) {
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuContainer = document.querySelector(".menu-container");
+        const menuIcon = document.querySelector(".menu-icon");
+    
+        // 📌 Menü öffnen/schließen beim Klicken auf das Icon
+        menuIcon.addEventListener("click", function (event) {
+            event.stopPropagation(); // Verhindert, dass das Schließen-Event ausgelöst wird
+            menuContainer.classList.toggle("show");
+        });
+    
+        // 📌 Menü bleibt offen, solange man mit der Maus darüber ist
+        menuContainer.addEventListener("mouseenter", function () {
+            menuContainer.classList.add("show");
+        });
+    
+        menuContainer.addEventListener("mouseleave", function () {
             menuContainer.classList.remove("show");
-        }
+        });
+    
+        // 📌 Menü schließt, wenn man irgendwo außerhalb klickt
+        document.addEventListener("click", function (event) {
+            if (!menuContainer.contains(event.target)) {
+                menuContainer.classList.remove("show");
+            }
+        });
     });
 
     // 📌 Mitgliederverwaltung: Mitglieder laden
