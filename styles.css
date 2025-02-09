@@ -45,6 +45,7 @@ body {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    overflow: hidden;
 }
 
 /* Menü Icon */
@@ -58,7 +59,6 @@ body {
     height: 24px;
     cursor: pointer;
     padding: 10px; /* Erhöht den Klickbereich */
-    margin-left: auto;
 }
 
 .menu-icon div {
