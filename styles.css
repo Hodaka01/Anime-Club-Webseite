@@ -1,4 +1,4 @@
-/* Allgemeine Stile */
+/* Dark Theme */
 body {
     background: #181818;
     color: white;
@@ -15,71 +15,11 @@ body {
     align-items: center;
 }
 
-/* Menü */
-.menu-container {
-    position: relative;
-}
-
-.menu-icon {
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-}
-
-.menu-icon div {
-    height: 4px;
-    width: 100%;
-    background-color: white;
-    margin: 5px 0;
-}
-
-.dropdown {
-    display: none;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background: #282828;
-    padding: 10px 0;
-    border-radius: 5px;
-}
-
-.dropdown a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-}
-
-.dropdown.show {
-    display: block;
-}
-
-/* Hauptinhalt */
-.container {
-    background: #282828;
-    padding: 30px;
-    margin-top: 80px;
-}
-
-/* Button */
-.button {
-    background-color: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.button:hover {
-    background-color: #e63946;
-}
-
-/* Datum & Countdown */
+/* Countdown */
 .date-container {
     flex-grow: 1;
     text-align: center;
     font-size: 18px;
-    font-weight: bold;
     color: white;
 }
 
@@ -88,21 +28,4 @@ body {
     font-weight: normal;
     color: lightgray;
     margin-top: 5px;
-}
-
-/* Mitgliederbereich */
-.mitglieder-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.gründer, .normale-mitglieder {
-    background: #3c3c3c;
-    padding: 20px;
-    border-radius: 10px;
-    width: 45%;
-    min-width: 300px;
 }
