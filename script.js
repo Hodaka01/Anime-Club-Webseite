@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const diffTime = targetDate - today;
         const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-        countdownDisplay.textContent = Noch ${daysRemaining} Tage bis zum Event!;
+        countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
     }
 
     // 📅 Aktualisiert die Datumsanzeige
@@ -51,42 +51,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 📌 Öffnet/Schließt den Datepicker
-    function toggleDatePicker() {
+    window.toggleDatePicker = function () {
         datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
-    }
+    };
 
     datePicker.addEventListener("change", function () {
         setEventDate(this.value);
     });
 
+    // Falls kein Datum gespeichert ist, setze das Standarddatum
+    if (!localStorage.getItem("eventDate")) {
+        setEventDate(calculateNextSecondSunday());
+    }
+
     updateDateDisplay();
 
     // 📌 Menü-Icon: Dropdown-Menü anzeigen/verstecken
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuContainer = document.querySelector(".menu-container");
-        const menuIcon = document.querySelector(".menu-icon");
-    
-        // 📌 Menü öffnen/schließen beim Klicken auf das Icon
-        menuIcon.addEventListener("click", function (event) {
-            event.stopPropagation(); // Verhindert, dass das Schließen-Event ausgelöst wird
-            menuContainer.classList.toggle("show");
-        });
-    
-        // 📌 Menü bleibt offen, solange man mit der Maus darüber ist
-        menuContainer.addEventListener("mouseenter", function () {
-            menuContainer.classList.add("show");
-        });
-    
-        menuContainer.addEventListener("mouseleave", function () {
+    const menuIcon = document.querySelector(".menu-icon");
+    menuIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Verhindert, dass das Schließen-Event ausgelöst wird
+        menuContainer.classList.toggle("show");
+    });
+
+    // 📌 Menü bleibt offen, solange man mit der Maus darüber ist
+    menuContainer.addEventListener("mouseenter", function () {
+        menuContainer.classList.add("show");
+    });
+
+    menuContainer.addEventListener("mouseleave", function () {
+        menuContainer.classList.remove("show");
+    });
+
+    // 📌 Menü schließt, wenn man irgendwo außerhalb klickt
+    document.addEventListener("click", function (event) {
+        if (!menuContainer.contains(event.target)) {
             menuContainer.classList.remove("show");
-        });
-    
-        // 📌 Menü schließt, wenn man irgendwo außerhalb klickt
-        document.addEventListener("click", function (event) {
-            if (!menuContainer.contains(event.target)) {
-                menuContainer.classList.remove("show");
-            }
-        });
+        }
     });
 
     // 📌 Mitgliederverwaltung: Mitglieder laden
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mitglieder.forEach((mitglied, index) => {
             const li = document.createElement("li");
-            li.textContent = ${mitglied.name} - Lieblingsgenres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime};
+            li.textContent = `${mitglied.name} - Lieblingsgenres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime}`;
 
             const löschenButton = document.createElement("button");
             löschenButton.textContent = "Löschen";
