@@ -12,28 +12,47 @@ body {
     color: #333;
 }
 
-/* Hauptcontainer */
-.container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 800px;
-}
-
 /* Navigation */
 .navbar {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
+    color: white;
 }
 
+/* Datum Anzeige */
+.date-container {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Datum input */
+.date-container input {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.date-container input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* Menü Icon */
 .menu-container {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .menu-icon {
@@ -79,81 +98,4 @@ body {
 .menu-container:hover .dropdown,
 .menu-container.active .dropdown {
     display: block;
-}
-
-/* Mitgliederbereich */
-.mitglieder-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.gründer, .normale-mitglieder {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 45%;
-    min-width: 300px;
-}
-
-/* Formular */
-.mitglied-form {
-    margin-top: 20px;
-}
-
-.mitglied-form input {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.mitglied-form button {
-    padding: 10px 20px;
-    background: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.mitglied-form button:hover {
-    background: #e63946;
-}
-
-/* Liste der Mitglieder */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #ffebcd;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Löschen-Button */
-button.löschen {
-    padding: 5px 10px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button.löschen:hover {
-    background: darkred;
 }
