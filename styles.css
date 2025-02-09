@@ -43,7 +43,8 @@ body {
 /* Menü Container */
 .menu-container {
     position: relative;
-    margin-left: auto; /* Schiebt das Menü nach rechts */
+    display: inline-block;
+    cursor: pointer;
 }
 
 /* Menü Icon */
@@ -56,6 +57,7 @@ body {
     width: 30px;
     height: 24px;
     cursor: pointer;
+    padding: 10px; /* Erhöht den Klickbereich */
 }
 
 .menu-icon div {
@@ -94,7 +96,8 @@ body {
 }
 
 /* Dropdown bleibt sichtbar beim Klicken und Hover */
-.menu-container.show .dropdown {
+.menu-container.show .dropdown,
+.menu-container:hover .dropdown {
     display: block;
 }
 
