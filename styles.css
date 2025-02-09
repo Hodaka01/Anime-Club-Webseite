@@ -58,7 +58,7 @@ body {
     height: 24px;
     cursor: pointer;
     padding: 10px; /* Erhöht den Klickbereich */
-    margin-left: -10px; /* Verschiebt das Icon um 10px nach links */
+    margin-left: auto;
 }
 
 .menu-icon div {
