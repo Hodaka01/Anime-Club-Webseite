@@ -43,7 +43,7 @@ body {
 /* Menü Container */
 .menu-container {
     position: relative;
-    margin-left: auto; /* Schiebt das Menü nach rechts */
+    margin-right: auto; /* Schiebt das Menü nach rechts */
 }
 
 /* Menü Icon */
