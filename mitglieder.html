@@ -9,7 +9,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation Menu (bleibt gleich wie auf der Hauptseite) -->
+    <!-- Navigation Menu -->
     <div class="navbar">
         <div class="menu-container">
             <div class="menu-icon">
@@ -18,21 +18,34 @@
                 <div></div>
             </div>
             <div class="dropdown">
-                <a href="index.html">Home</a> <!-- Zurück zur Hauptseite -->
+                <a href="index.html">Home</a>
                 <a href="mitglieder.html">Mitglieder</a>
             </div>
         </div>
     </div>
 
-    <!-- Mitgliederliste -->
+    <!-- Mitgliederbereich -->
     <h1>Mitgliederliste</h1>
-    <p>Hier sind alle Gründer des Anime Clubs aufgelistet:</p>
-
-    <ul>
-        <p>Anas</p>
-        <p>Lea</p>
-        <p>Anny</p>
-        <p>Jenny</p>
-    </ul>
+    <div class="mitglieder-container">
+        <div class="gründer">
+            <h2>Gründer</h2>
+            <ul>
+                <li>Anas</li>
+                <li>Lea</li>
+                <li>Anny</li>
+                <li>Jenny</li>
+            </ul>
+        </div>
+        <div class="normale-mitglieder">
+            <h2>Normale Mitglieder</h2>
+            <ul id="mitglied-liste"></ul>
+            <div class="mitglied-form">
+                <input type="text" id="mitglied-name" placeholder="Name">
+                <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
+                <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
+                <button onclick="hinzufügenMitglied()">Hinzufügen</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
