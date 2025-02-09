@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mitglieder.forEach((mitglied, index) => {
             const li = document.createElement("li");
             li.innerHTML = `${mitglied.name} - Genres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime} 
-                            <button onclick="löschenMitglied(${index})">Löschen</button>`;
+                            <button class="löschen" onclick="löschenMitglied(${index})">Löschen</button>`;
             mitgliedListe.appendChild(li);
         });
     }
@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("mitglied-name").value = "";
             document.getElementById("mitglied-genre").value = "";
             document.getElementById("mitglied-anime").value = "";
+        } else {
+            alert("Bitte einen Namen eingeben!");
         }
     };
 
