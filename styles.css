@@ -14,7 +14,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Nutzt die gesamte Breite des Fensters */
+    width: 100%; /* Nutzt die gesamte Fensterbreite */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,11 +32,11 @@ body {
     border-radius: 15px; /* Runde die Ecken des Hauptcontainers leicht ab */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Schatten für Tiefe */
     width: 90%;
-    max-width: 1200px; /* Begrenze die Breite des Inhalts */
+    max-width: 800px; /* Begrenze die Breite des Inhalts */
     color: white;
     margin-left: auto; /* Zentriere den Inhalt horizontal */
     margin-right: auto;
-    text-align: left; /* Linksbündiger Text für lesbaren Inhalt */
+    text-align: center; /* Zentriere den Text innerhalb der Container */
 }
 
 /* Datum-Anzeige */
@@ -128,9 +128,9 @@ body {
 /* Mitgliederbereich */
 .mitglieder-container {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Passt sich an kleine Bildschirme an */
+    justify-content: center; /* Zentriert die Blöcke horizontal */
     gap: 20px;
+    flex-wrap: wrap; /* Passt sich an kleine Bildschirme an */
     margin-top: 20px;
 }
 
@@ -141,6 +141,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Schatten für Tiefe */
     width: 45%; /* Gleiche Breite für Gründer- und Mitgliederbereich */
     min-width: 300px; /* Minimale Breite für kleine Bildschirme */
+    text-align: center; /* Zentriere den Text innerhalb der Boxen */
 }
 
 /* Formular */
