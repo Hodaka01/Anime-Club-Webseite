@@ -1,7 +1,40 @@
-/* Menü Container */
+body {
+    background: #181818;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #212121;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* Date Container */
+.date-container {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Menü */
 .menu-container {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     position: relative;
 }
 
@@ -13,5 +46,56 @@
     width: 30px;
     height: 24px;
     cursor: pointer;
-    margin-right: 20px; /* Abstand zum Rand */
+}
+
+.menu-icon div {
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: #282828;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.menu-container:hover .dropdown,
+.menu-container:focus-within .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.dropdown a:hover {
+    background-color: #383838;
+}
+
+/* Mitglieder Container */
+.mitglieder-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gründer, .normale-mitglieder {
+    background: #3c3c3c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
