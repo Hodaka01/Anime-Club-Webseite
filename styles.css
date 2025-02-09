@@ -17,26 +17,34 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 20px; /* Anpassung der inneren Abstände */
     background: #212121;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
-/* Menü */
+/* Menü Container */
 .menu-container {
-    position: relative;
     display: flex;
+    align-items: center;
+    position: relative;
 }
 
+/* Menü Icon */
 .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px; /* Höhere Höhe für bessere Sichtbarkeit */
     cursor: pointer;
 }
 
 .menu-icon div {
+    height: 4px; /* Dickere Linien für bessere Sichtbarkeit */
+    width: 100%;
     background-color: white;
-    width: 30px;
-    height: 3px;
-    margin: 5px 0;
+    border-radius: 2px;
 }
 
 /* Dropdown bleibt sichtbar beim Hover */
