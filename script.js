@@ -3,15 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const datePicker = document.getElementById("date-picker");
     const mitgliedListe = document.getElementById("mitglied-liste");
 
-    // Toggle Date Picker
+    // Datum-Funktionen
     function toggleDatePicker() {
         datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
     }
 
-    // Event date logic
-    function updateEventDate() {
-        const storedDate = localStorage.getItem("eventDate");
-        const eventDate = storedDate ? new Date(storedDate) : new Date();
+    function updateCountdown() {
+        const eventDate = new Date(localStorage.getItem("eventDate")) || new Date();
         eventDateDisplay.textContent = eventDate.toLocaleDateString("de-DE", {
             weekday: "long",
             day: "numeric",
@@ -21,26 +19,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     datePicker.addEventListener("change", function () {
-        localStorage.setItem("eventDate", this.value);
-        updateEventDate();
+        const selectedDate = new Date(this.value);
+        if (!isNaN(selectedDate)) {
+            localStorage.setItem("eventDate", selectedDate.toISOString());
+            updateCountdown();
+        }
     });
 
-    updateEventDate();
-
-    // Mitgliederliste laden
-    function ladeMitglieder() {
-        const gespeicherteMitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+    // Mitglieder-Daten aus localStorage laden
+    function loadMitglieder() {
+        const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
-        gespeicherteMitglieder.forEach((mitglied, index) => {
+        mitglieder.forEach((mitglied, index) => {
             const li = document.createElement("li");
-            li.textContent = `${mitglied.name} - ${mitglied.genre} - ${mitglied.anime}`;
+            li.textContent = `${mitglied.name} - Lieblingsgenres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime}`;
             const löschenButton = document.createElement("button");
             löschenButton.textContent = "Löschen";
             löschenButton.classList.add("löschen");
             löschenButton.onclick = () => {
-                gespeicherteMitglieder.splice(index, 1);
-                localStorage.setItem("mitglieder", JSON.stringify(gespeicherteMitglieder));
-                ladeMitglieder();
+                mitglieder.splice(index, 1);
+                localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+                loadMitglieder();
             };
             li.appendChild(löschenButton);
             mitgliedListe.appendChild(li);
@@ -52,16 +51,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const name = document.getElementById("mitglied-name").value;
         const genre = document.getElementById("mitglied-genre").value;
         const anime = document.getElementById("mitglied-anime").value;
+
         if (name && genre && anime) {
-            const gespeicherteMitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
-            gespeicherteMitglieder.push({ name, genre, anime });
-            localStorage.setItem("mitglieder", JSON.stringify(gespeicherteMitglieder));
-            ladeMitglieder();
+            const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+            mitglieder.push({ name, genre, anime });
+            localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+            loadMitglieder();
             document.getElementById("mitglied-name").value = "";
             document.getElementById("mitglied-genre").value = "";
             document.getElementById("mitglied-anime").value = "";
         }
     };
 
-    ladeMitglieder();
+    updateCountdown();
+    loadMitglieder();
 });
