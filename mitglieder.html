@@ -10,13 +10,13 @@
 </head>
 <body>
     <!-- Navigation Menu -->
-    <div class="navbar">
+    <header class="navbar">
         <div class="date-container">
             <span id="event-date" onclick="toggleDatePicker()"></span>
             <input type="date" id="date-picker" style="display: none;">
         </div>
         <div class="menu-container">
-            <div class="menu-icon">
+            <div class="menu-icon" tabindex="0">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -26,10 +26,10 @@
                 <a href="mitglieder.html">Mitglieder</a>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Mitgliederbereich -->
-    <div class="container">
+    <main class="container">
         <h1>Mitgliederliste</h1>
         <div class="mitglieder-container">
             <div class="gründer">
@@ -52,6 +52,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
