@@ -14,26 +14,8 @@
 <body>
     <!-- Navigation -->
     <header class="navbar">
-    <div class="menu-container">
-        <div class="menu-icon" tabindex="0" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="dropdown">
-            <a href="index.html">Home</a>
-            <a href="mitglieder.html">Mitglieder</a>
-        </div>
-    </div>
-    <!-- HINZUFÜGEN: Datum & Countdown -->
-    <div class="date-container">
-        <span id="event-date" onclick="toggleDatePicker()"></span>
-        <input type="date" id="date-picker" style="display: none;">
-        <p id="countdown"></p> <!-- Countdown-Anzeige -->
-    </div>
-</header>
         <div class="menu-container">
-            <div class="menu-icon" tabindex="0" onclick="toggleMenu()">
+            <div class="menu-icon" onclick="toggleMenu()">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -43,13 +25,19 @@
                 <a href="mitglieder.html">Mitglieder</a>
             </div>
         </div>
+        <!-- Neuer Bereich: Datum & Countdown -->
+        <div class="date-container">
+            <span id="event-date" onclick="toggleDatePicker()"></span>
+            <input type="date" id="date-picker" style="display: none;">
+            <p id="countdown"></p>
+        </div>
     </header>
 
     <!-- Hauptinhalt -->
     <main class="container">
         <h1>Anime Club Webseite</h1>
         <h2>Hallo Clubmitglieder!</h2>
-        <p>Dies ist unsere Anime Club Webseite!</p>
+        <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
 
         <div class="button-container">
             <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Regeln</a>
