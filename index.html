@@ -14,10 +14,24 @@
 <body>
     <!-- Navigation -->
     <header class="navbar">
-        <div class="date-container">
-            <span id="event-date" onclick="toggleDatePicker()"></span>
-            <input type="date" id="date-picker" style="display: none;">
+    <div class="menu-container">
+        <div class="menu-icon" tabindex="0" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+        <div class="dropdown">
+            <a href="index.html">Home</a>
+            <a href="mitglieder.html">Mitglieder</a>
+        </div>
+    </div>
+    <!-- HINZUFÜGEN: Datum & Countdown -->
+    <div class="date-container">
+        <span id="event-date" onclick="toggleDatePicker()"></span>
+        <input type="date" id="date-picker" style="display: none;">
+        <p id="countdown"></p> <!-- Countdown-Anzeige -->
+    </div>
+</header>
         <div class="menu-container">
             <div class="menu-icon" tabindex="0" onclick="toggleMenu()">
                 <div></div>
