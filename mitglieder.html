@@ -19,7 +19,7 @@
             <input type="date" id="date-picker" style="display: none;">
         </div>
         <div class="menu-container">
-            <div class="menu-icon" tabindex="0">
+            <div class="menu-icon" onclick="toggleMenu()" tabindex="0">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -34,12 +34,26 @@
     <!-- Mitgliederbereich -->
     <main class="container">
         <h1>Mitgliederliste</h1>
-        <ul id="mitglied-liste"></ul>
-        <div class="mitglied-form">
-            <input type="text" id="mitglied-name" placeholder="Name">
-            <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
-            <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
-            <button onclick="hinzufügenMitglied()">Hinzufügen</button>
+        <div class="mitglieder-container">
+            <div class="gründer">
+                <h2>Gründer</h2>
+                <ul>
+                    <li>Anas</li>
+                    <li>Lea</li>
+                    <li>Anny</li>
+                    <li>Jenny</li>
+                </ul>
+            </div>
+            <div class="normale-mitglieder">
+                <h2>Normale Mitglieder</h2>
+                <ul id="mitglied-liste"></ul>
+                <div class="mitglied-form">
+                    <input type="text" id="mitglied-name" placeholder="Name">
+                    <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
+                    <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
+                    <button onclick="hinzufügenMitglied()">Hinzufügen</button>
+                </div>
+            </div>
         </div>
     </main>
 </body>
