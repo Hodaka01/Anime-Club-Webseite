@@ -6,15 +6,14 @@
     <meta name="description" content="Mitglieder des Anime Clubs">
     <title>Mitglieder - Anime Club</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="config.js" defer></script>
-    <script src="firebase.js" defer></script>
-    <script src="db.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Navigation -->
     <header class="navbar">
+        <!-- Menü Container -->
         <div class="menu-container">
-            <div class="menu-icon" onclick="toggleMenu()">
+            <div class="menu-icon">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -26,9 +25,12 @@
         </div>
     </header>
 
+    <!-- Mitgliederbereich -->
     <main class="container">
         <h1>Mitgliederliste</h1>
+
         <div class="mitglieder-container">
+            <!-- Gründer Mitglieder -->
             <div class="gründer">
                 <h2>Gründer</h2>
                 <ul>
@@ -38,9 +40,13 @@
                     <li>Jenny</li>
                 </ul>
             </div>
+
+            <!-- Normale Mitglieder -->
             <div class="normale-mitglieder">
                 <h2>Normale Mitglieder</h2>
                 <ul id="mitglied-liste"></ul>
+
+                <!-- Formular zum Hinzufügen eines neuen Mitglieds -->
                 <div class="mitglied-form">
                     <input type="text" id="mitglied-name" placeholder="Name">
                     <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
