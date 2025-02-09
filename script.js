@@ -3,11 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const datePicker = document.getElementById("date-picker");
     const mitgliedListe = document.getElementById("mitglied-liste");
 
-    // Datum-Funktionen
+    // Zeigt oder versteckt den Datepicker
     function toggleDatePicker() {
         datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
     }
 
+    // Aktualisiert das Datum in der Anzeige
     function updateCountdown() {
         const eventDate = new Date(localStorage.getItem("eventDate")) || new Date();
         eventDateDisplay.textContent = eventDate.toLocaleDateString("de-DE", {
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Listener für den Datepicker
     datePicker.addEventListener("change", function () {
         const selectedDate = new Date(this.value);
         if (!isNaN(selectedDate)) {
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Mitglieder-Daten aus localStorage laden
+    // Lädt die Mitglieder aus localStorage
     function loadMitglieder() {
         const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Neues Mitglied hinzufügen
+    // Fügt ein neues Mitglied hinzu
     window.hinzufügenMitglied = function () {
         const name = document.getElementById("mitglied-name").value;
         const genre = document.getElementById("mitglied-genre").value;
