@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 📌 Mitgliederverwaltung: Mitglieder laden
+     // 📌 Mitgliederverwaltung: Mitglieder laden
     function loadMitglieder() {
         const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
@@ -101,10 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const löschenButton = document.createElement("button");
             löschenButton.textContent = "Löschen";
             löschenButton.classList.add("löschen");
-            löschenButton.onclick = () => {
-                mitglieder.splice(index, 1);
-                localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-                loadMitglieder();
+            löschenButton.onclick = function () {
+                deleteMitglied(index);
             };
 
             li.appendChild(löschenButton);
@@ -112,24 +110,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 📌 Mitgliederverwaltung: Mitglied hinzufügen
+    // 📌 Mitglied hinzufügen
     function hinzufügenMitglied() {
-        const name = document.getElementById("mitglied-name").value;
-        const genre = document.getElementById("mitglied-genre").value;
-        const anime = document.getElementById("mitglied-anime").value;
+        const name = document.getElementById("mitglied-name").value.trim();
+        const genre = document.getElementById("mitglied-genre").value.trim();
+        const anime = document.getElementById("mitglied-anime").value.trim();
 
-        if (name && genre && anime) {
-            const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
-            mitglieder.push({ name, genre, anime });
-            localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-            loadMitglieder();
-
-            document.getElementById("mitglied-name").value = "";
-            document.getElementById("mitglied-genre").value = "";
-            document.getElementById("mitglied-anime").value = "";
+        if (name === "" || genre === "" || anime === "") {
+            alert("Bitte alle Felder ausfüllen!");
+            return;
         }
+
+        let mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+        mitglieder.push({ name, genre, anime });
+        localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+
+        // Nach dem Speichern aktualisieren
+        loadMitglieder();
+
+        // Eingabefelder zurücksetzen
+        document.getElementById("mitglied-name").value = "";
+        document.getElementById("mitglied-genre").value = "";
+        document.getElementById("mitglied-anime").value = "";
+    }
+
+    // 📌 Mitglied löschen
+    function deleteMitglied(index) {
+        let mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+        mitglieder.splice(index, 1); // Entfernt das Mitglied an der angegebenen Stelle
+        localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+        loadMitglieder();
     }
 
     // Lade Mitglieder beim Start
     loadMitglieder();
+
+    // Event-Listener für den Hinzufügen-Button
+    document.querySelector(".mitglied-form button").addEventListener("click", hinzufügenMitglied);
 });
