@@ -1,10 +1,11 @@
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
     const eventDateDisplay = document.getElementById("event-date");
     const datePicker = document.getElementById("date-picker");
     const countdownDisplay = document.getElementById("countdown");
     const mitgliedListe = document.getElementById("mitglied-liste");
+    const menuContainer = document.querySelector(".menu-container");
 
-    // Berechnet den nächsten zweiten Sonntag im Monat
+    // 🗓️ Berechnet den nächsten zweiten Sonntag im Monat
     function calculateNextSecondSunday() {
         let today = new Date();
         let month = today.getMonth();
@@ -16,19 +17,30 @@ document.addEventListener("DOMContentLoaded", async function () {
         return new Date(year, month, secondSunday).toISOString();
     }
 
-    // Berechnet die verbleibenden Tage bis zum Event
+    // 🗂️ Holt das gespeicherte Datum oder setzt das Standarddatum
+    function getEventDate() {
+        return localStorage.getItem("eventDate") || calculateNextSecondSunday();
+    }
+
+    // 💾 Speichert das Datum lokal
+    function setEventDate(date) {
+        localStorage.setItem("eventDate", date);
+        updateDateDisplay();
+    }
+
+    // ⏳ Berechnet und zeigt den Countdown an
     function updateCountdown(eventDate) {
         const today = new Date();
         const targetDate = new Date(eventDate);
         const diffTime = targetDate - today;
         const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
+
         countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
     }
 
-    // Zeigt das aktuelle Datum und den Countdown an
-    async function updateDateDisplay() {
-        const eventDate = await getEventDate();
+    // 📅 Aktualisiert die Datumsanzeige
+    function updateDateDisplay() {
+        const eventDate = getEventDate();
         eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
             weekday: "long",
             day: "numeric",
@@ -38,24 +50,39 @@ document.addEventListener("DOMContentLoaded", async function () {
         updateCountdown(eventDate);
     }
 
-    // Öffnet/Schließt den Datepicker
+    // 📌 Öffnet/Schließt den Datepicker
     function toggleDatePicker() {
         datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
     }
 
-    datePicker.addEventListener("change", async function () {
-        await setEventDate(this.value);
-        updateDateDisplay();
+    datePicker.addEventListener("change", function () {
+        setEventDate(this.value);
     });
 
     updateDateDisplay();
 
-    // Menü-Toggle für Navigation
-    function toggleMenu() {
-        document.querySelector(".dropdown").classList.toggle("show");
-    }
+    // 📌 Menü-Icon: Dropdown-Menü anzeigen/verstecken
+    menuContainer.addEventListener("click", function () {
+        menuContainer.classList.toggle("show");
+    });
 
-    // Mitgliederverwaltung
+    // 📌 Menü bleibt sichtbar, wenn man mit der Maus darüber bleibt
+    menuContainer.addEventListener("mouseenter", function () {
+        menuContainer.classList.add("show");
+    });
+
+    menuContainer.addEventListener("mouseleave", function () {
+        menuContainer.classList.remove("show");
+    });
+
+    // 📌 Menü schließt, wenn man irgendwo anders klickt
+    document.addEventListener("click", function (event) {
+        if (!menuContainer.contains(event.target)) {
+            menuContainer.classList.remove("show");
+        }
+    });
+
+    // 📌 Mitgliederverwaltung: Mitglieder laden
     function loadMitglieder() {
         const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
@@ -78,6 +105,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+    // 📌 Mitgliederverwaltung: Mitglied hinzufügen
     function hinzufügenMitglied() {
         const name = document.getElementById("mitglied-name").value;
         const genre = document.getElementById("mitglied-genre").value;
