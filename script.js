@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const eventDateDisplay = document.getElementById("event-date");
     const datePicker = document.getElementById("date-picker");
-    
+
     async function updateDateDisplay() {
         const eventDate = await getEventDate();
         eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDateDisplay();
 });
 
-// Menü-Toggle
 function toggleMenu() {
     document.querySelector(".dropdown").classList.toggle("show");
 }
