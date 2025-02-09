@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function getNextSecondSunday() {
         let today = new Date();
         let year = today.getFullYear();
-        let month = today.getMonth() + 1; // Monat beginnt bei 0
+        let month = today.getMonth() + 1;
         let secondSunday;
 
         while (true) {
