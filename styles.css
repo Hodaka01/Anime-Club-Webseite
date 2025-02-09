@@ -1,3 +1,11 @@
+/* Allgemeine Stile */
+body {
+    background: #181818;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
 /* Navigation */
 .navbar {
     background: #212121;
@@ -46,16 +54,39 @@
     display: block;
 }
 
-/* Dark Mode */
-body {
-    background: #181818;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
+/* Hauptinhalt */
 .container {
     background: #282828;
     padding: 30px;
     margin-top: 80px;
+}
+
+/* Button */
+.button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #e63946;
+}
+
+/* Mitgliederbereich */
+.mitglieder-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gründer, .normale-mitglieder {
+    background: #3c3c3c;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    min-width: 300px;
 }
