@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
 /* Navigation */
@@ -44,6 +45,7 @@ body {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    overflow: hidden;
 }
 
 /* Menü Icon */
