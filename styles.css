@@ -93,6 +93,12 @@ body {
     background-color: #383838;
 }
 
+/* Das Dropdown bleibt sichtbar, solange entweder das Icon oder das Menü fokussiert ist */
+.icon:hover + .dropdown,
+.dropdown:hover {
+    display: block;
+}
+
 /* Dropdown bleibt sichtbar beim Klicken und Hover */
 .menu-container.show .dropdown,
 .menu-container:hover .dropdown {
