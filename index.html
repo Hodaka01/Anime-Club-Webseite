@@ -9,6 +9,14 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Datum & Countdown -->
+        <div class="date-container">
+            <span id="event-date" onclick="toggleDatePicker()"></span>
+            <input type="date" id="date-picker" style="display: none;">
+            <p id="countdown"></p>
+        </div>
+    </header>
+    
     <!-- Navigation -->
     <header class="navbar">
         <!-- Menü Container -->
@@ -23,14 +31,7 @@
                 <a href="mitglieder.html">Mitglieder</a>
             </div>
         </div>
-        <!-- Datum & Countdown -->
-        <div class="date-container">
-            <span id="event-date" onclick="toggleDatePicker()"></span>
-            <input type="date" id="date-picker" style="display: none;">
-            <p id="countdown"></p>
-        </div>
-    </header>
-
+        
     <!-- Hauptinhalt -->
     <main class="container">
         <h1>Anime Club Webseite</h1>
