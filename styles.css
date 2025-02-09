@@ -4,23 +4,39 @@ body {
     color: white; /* Textfarbe weiß für Kontrast */
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
     text-align: center;
     overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
 
 /* Navigation */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Nutzt die gesamte Breite des Fensters */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Abstände innerhalb der Navigation */
     background: #212121; /* Dunkleres Grau für die Navigation */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Leichter Schatten für Tiefe */
-    width: 100%;
-    max-width: 800px; /* Begrenze die Breite der Navigation */
-    margin: 0 auto; /* Zentriere die Navigation */
-    position: relative;
-    border-radius: 10px; /* Runde die Ecken der Navigation leicht ab */
+    z-index: 100; /* Stellt sicher, dass die Navigation immer im Vordergrund ist */
+}
+
+/* Abstand zum Hauptinhalt */
+.container {
+    margin-top: 80px; /* Platz unter der fixierten Navigation */
+    padding: 30px;
+    background: #282828; /* Dunkler Hintergrund für den Hauptbereich */
+    border-radius: 15px; /* Runde die Ecken des Hauptcontainers leicht ab */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Schatten für Tiefe */
+    width: 90%;
+    max-width: 1200px; /* Begrenze die Breite des Inhalts */
+    color: white;
+    margin-left: auto; /* Zentriere den Inhalt horizontal */
+    margin-right: auto;
+    text-align: left; /* Linksbündiger Text für lesbaren Inhalt */
 }
 
 /* Datum-Anzeige */
@@ -85,19 +101,6 @@ body {
 
 .dropdown a:hover {
     background-color: #383838; /* Helleres Grau beim Hover */
-}
-
-/* Hauptcontainer */
-.container {
-    margin-top: 100px; /* Platz unter der Navigation */
-    padding: 30px;
-    background: #282828; /* Dunkler Hintergrund für den Hauptbereich */
-    border-radius: 15px; /* Runde die Ecken des Hauptcontainers leicht ab */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Schatten für Tiefe */
-    width: 90%;
-    max-width: 800px; /* Begrenze die Breite des Inhalts */
-    color: white;
-    text-align: left; /* Linksbündiger Text für lesbaren Inhalt */
 }
 
 /* Button Container */
