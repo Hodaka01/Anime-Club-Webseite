@@ -44,7 +44,6 @@ body {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    overflow: hidden;
 }
 
 /* Menü Icon */
