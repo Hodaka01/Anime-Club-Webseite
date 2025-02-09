@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const mitgliedListe = document.getElementById("mitglied-liste");
     const datePicker = document.getElementById("date-picker");
     const eventDateDisplay = document.getElementById("event-date");
     const countdownDisplay = document.getElementById("countdown");
-    const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
-    
+
     function getNextSecondSunday() {
         let today = new Date();
         let year = today.getFullYear();
@@ -34,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let timeDifference = eventDate - today;
         let daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-        eventDateDisplay.textContent = `Nächstes Event: ${eventDate.toLocaleDateString("de-DE")}`;
+        let options = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
+        eventDateDisplay.textContent = `Nächstes Event: ${eventDate.toLocaleDateString("de-DE", options)}`;
         countdownDisplay.textContent = `Tage bis dahin: ${daysRemaining}`;
 
         if (daysRemaining < 0) {
@@ -51,39 +50,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function renderMitglieder() {
-        mitgliedListe.innerHTML = "";
-        mitglieder.forEach((mitglied, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `${mitglied.name} - Genres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime} 
-                            <button class="löschen" onclick="löschenMitglied(${index})">Löschen</button>`;
-            mitgliedListe.appendChild(li);
-        });
-    }
-
-    window.hinzufügenMitglied = function () {
-        const name = document.getElementById("mitglied-name").value;
-        const genre = document.getElementById("mitglied-genre").value;
-        const anime = document.getElementById("mitglied-anime").value;
-
-        if (name.trim() !== "") {
-            mitglieder.push({ name, genre, anime });
-            localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-            renderMitglieder();
-            document.getElementById("mitglied-name").value = "";
-            document.getElementById("mitglied-genre").value = "";
-            document.getElementById("mitglied-anime").value = "";
-        } else {
-            alert("Bitte einen Namen eingeben!");
-        }
-    };
-
-    window.löschenMitglied = function (index) {
-        mitglieder.splice(index, 1);
-        localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-        renderMitglieder();
-    };
-
     updateCountdown();
-    renderMitglieder();
 });
