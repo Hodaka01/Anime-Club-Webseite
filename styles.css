@@ -96,9 +96,8 @@ body {
     background-color: #383838;
 }
 
-/* Dropdown bleibt sichtbar beim Klicken und Hover */
-.menu-container.show .dropdown,
-.menu-container:hover .dropdown {
+/* ✅ Menü bleibt sichtbar, wenn die Klasse 'show' aktiv ist */
+.menu-container.show .dropdown {
     display: block;
 }
 
