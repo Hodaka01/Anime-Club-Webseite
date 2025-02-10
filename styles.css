@@ -25,6 +25,17 @@ body {
 /* ==========================================================================
    NAVIGATION & HEADER-BEREICH
    ========================================================================== */
+
+/* Logo-Container innerhalb der Navbar */
+.logo {
+  /* Da die Navbar als Flexcontainer arbeitet, wird dieses Element automatisch links positioniert */
+}
+
+.logo img {
+  height: 60px; /* Höhe des Logos an die Navbar anpassen */
+  width: auto;
+}
+
 .navbar {
   position: relative;
   display: flex;
@@ -75,12 +86,12 @@ body {
 
 .menu-container {
   position: relative;
-  margin-left: auto; /* schiebt den Container in den rechten Bereich */
+  margin-left: auto;
   display: flex;
   align-items: center;
   cursor: pointer;
   overflow: visible;
-  padding: 10px 20px; /* optional: sorgt für einen ausreichenden Hover-Bereich */
+  padding: 10px 20px;
 }
 
 .menu-icon {
@@ -284,20 +295,20 @@ button.löschen:hover {
   }
   
   .navbar {
-     position: relative; /* Hinzufügen, um als Positionierungsreferenz zu dienen */
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
-     padding: 15px 10px;
-     min-height: 80px;
-   }
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    min-height: 80px;
+  }
   
   .date-container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    margin-bottom: 0;  /* Abstand entfernen, damit alles in einer Zeile sitzt */
+    margin-bottom: 0;
     font-size: 16px;
   }
   
@@ -312,7 +323,7 @@ button.löschen:hover {
     right: auto;
     top: auto;
     transform: none;
-    margin-top: 0; /* Den zusätzlichen Abstand entfernen */
+    margin-top: 0;
   }
   
   .container {
