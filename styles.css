@@ -171,9 +171,9 @@ body {
    ========================================================================== */
 .mitglieder-container {
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
   margin-top: 20px;
 }
 
@@ -283,11 +283,11 @@ button.löschen:hover {
   }
   
   .navbar {
-    flex-direction: column;
+    flex-direction: row;  /* Ändert die Anordnung von vertikal (column) zu horizontal (row) */
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Datum/Countdown links, Menü-Icon rechts */
     padding: 15px 10px;
-    min-height: auto;
+    min-height: 80px; /* Falls du eine Mindesthöhe beibehalten möchtest */
   }
   
   .date-container {
@@ -295,7 +295,7 @@ button.löschen:hover {
     left: 0;
     top: 0;
     transform: none;
-    margin-bottom: 10px;
+    margin-bottom: 0;  /* Abstand entfernen, damit alles in einer Zeile sitzt */
     font-size: 16px;
   }
   
@@ -310,7 +310,7 @@ button.löschen:hover {
     right: auto;
     top: auto;
     transform: none;
-    margin-top: 10px;
+    margin-top: 0; /* Hier den zusätzlichen Abstand entfernen */
   }
   
   .container {
