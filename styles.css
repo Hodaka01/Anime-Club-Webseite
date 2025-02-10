@@ -74,14 +74,13 @@ body {
 }
 
 .menu-container {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  margin-left: auto; /* schiebt den Container in den rechten Bereich */
   display: flex;
   align-items: center;
   cursor: pointer;
   overflow: visible;
+  padding: 10px 20px; /* optional: sorgt für einen ausreichenden Hover-Bereich */
 }
 
 .menu-icon {
