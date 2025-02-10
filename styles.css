@@ -44,8 +44,9 @@ body {
 /* Datum & Countdown */
 .date-container {
     position: absolute;
-    left: 50%;                    /* Startet in der Mitte */
-    transform: translateX(-50%);  /* Verschiebt den Container um die Hälfte seiner Breite nach links, sodass er exakt zentriert ist */
+    left: 50%;             /* Horizontal in der Mitte */
+    top: 50%;              /* Vertikal in der Mitte */
+    transform: translate(-50%, -50%);  /* Korrektur, sodass der Mittelpunkt des Containers exakt in der Mitte liegt */
     display: flex;         /* Macht aus .date-container einen Flex-Container */
     flex-direction: column; /* Elemente werden nun untereinander angeordnet */
     align-items: center;   /* Zentriert den Inhalt vertikal */
@@ -111,7 +112,6 @@ body {
 /* Wenn `.show` aktiv ist */
 .dropdown.show {
     display: block; /* Menü wird sichtbar */
-    z-index: 1000;
 }
 
 
