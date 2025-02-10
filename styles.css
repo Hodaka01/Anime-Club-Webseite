@@ -1,12 +1,13 @@
 /* ==========================================================================
    UNIVERSAL & GLOBAL STYLES
    ========================================================================== */
-
 /* Box-Sizing für alle Elemente (vereinfacht Breiten-/Höhen-Berechnungen) */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /* Grundlegende Einstellungen für HTML & Body */
@@ -14,15 +15,23 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;  /* Verhindert horizontales Scrollen */
+    max-width: 100vw;       /* Verhindert, dass der Inhalt breiter als der Viewport wird */
+    overflow-x: hidden;     /* Verhindert horizontales Scrollen */
 }
 
 body {
-    background: #181818;            /* Dunkler Hintergrund (Dark Mode) */
-    color: white;                   /* Weiße Schrift für hohen Kontrast */
+    background: #181818;    /* Dunkler Hintergrund (Dark Mode) */
+    color: white;           /* Weiße Schrift für hohen Kontrast */
     font-family: Arial, sans-serif;
     text-align: center;
 }
+
+/* Eingebettete Medien: Bilder, Videos etc. passen sich immer dem Container an */
+img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /* ==========================================================================
    NAVIGATION & HEADER-BEREICH
@@ -147,6 +156,7 @@ body {
     background-color: #383838;
 }
 
+
 /* ==========================================================================
    HAUPTINHALT & LAYOUT
    ========================================================================== */
@@ -165,7 +175,7 @@ body {
     text-align: center;
 }
 
-/* Container für Buttons (z.B. für Regeln & Historie) */
+/* Container für Buttons (z. B. für Regeln & Historie) */
 .button-container {
     display: flex;
     justify-content: center;
@@ -186,6 +196,7 @@ body {
 .button:hover {
     background-color: #e63946;
 }
+
 
 /* ==========================================================================
    MITGLIEDERBEREICH (MEMBERS SECTION)
@@ -210,6 +221,7 @@ body {
     min-width: 300px;
     text-align: center;
 }
+
 
 /* ==========================================================================
    FORMULAR FÜR MITGLIEDER
@@ -242,6 +254,7 @@ body {
 .mitglied-form button:hover {
     background: #e63946;
 }
+
 
 /* ==========================================================================
    MITGLIEDERLISTE & EINZELNE MITGLIEDER
@@ -304,6 +317,7 @@ button.löschen {
 button.löschen:hover {
     background: darkred;
 }
+
 
 /* ==========================================================================
    RESPONSIVE DESIGN FÜR MOBILE & TABLET (KEIN HORIZONTALES SCROLLEN)
