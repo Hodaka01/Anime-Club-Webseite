@@ -24,8 +24,26 @@ body {
     z-index: 100;
 }
 
+/* Styling für den Datepicker im Datumcontainer */
+#date-picker {
+  display: none;  /* Anfangs versteckt */
+  background: #282828;
+  border: 1px solid #555;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  position: absolute;
+  top: 100%;         /* Direkt unterhalb des angezeigten Datums */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;      /* Damit er vor anderen Elementen liegt */
+  width: auto;       /* Oder eine feste Breite, falls gewünscht */
+}
+
 /* Datum & Countdown */
 .date-container {
+    position: relative;
     flex-grow: 1;
     display: flex;         /* Macht aus .date-container einen Flex-Container */
     align-items: center;   /* Zentriert den Inhalt vertikal */
