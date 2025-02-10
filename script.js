@@ -71,25 +71,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuContainer = document.querySelector(".menu-container");
   const menuIcon = document.querySelector(".menu-icon");
   const dropdown = document.querySelector(".dropdown");
-
+  
+  // Flag, das anzeigt, ob das Dropdown per Klick geöffnet wurde
+  let clicked = false;
+  
   menuIcon.addEventListener("click", (event) => {
     event.stopPropagation();
-    dropdown.classList.toggle("show");
-  });
-
-  menuContainer.addEventListener("mouseenter", () => dropdown.classList.add("show"));
-  menuContainer.addEventListener("mouseleave", (event) => {
-    if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
+    // Toggle: Wenn bisher nicht geklickt wurde, wird clicked true
+    clicked = !clicked;
+    if (clicked) {
+      dropdown.classList.add("show");
+    } else {
       dropdown.classList.remove("show");
     }
   });
-
+  
+  // Beim Hovern soll das Dropdown immer angezeigt werden
+  menuContainer.addEventListener("mouseenter", () => {
+    dropdown.classList.add("show");
+  });
+  
+  // Beim Verlassen des Menübereichs wird das Dropdown nur geschlossen, wenn es nicht per Klick geöffnet wurde
+  menuContainer.addEventListener("mouseleave", (event) => {
+    if (!clicked && !menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
+      dropdown.classList.remove("show");
+    }
+  });
+  
+  // Klicks außerhalb des Menüs schließen das Dropdown und setzen das Klick-Flag zurück
   document.addEventListener("click", (event) => {
     if (!menuContainer.contains(event.target)) {
       dropdown.classList.remove("show");
+      clicked = false;
     }
   });
-
   // ============================
   // Mitgliederverwaltung
   // ============================
