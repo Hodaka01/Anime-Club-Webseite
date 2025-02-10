@@ -66,7 +66,7 @@ body {
 /* Menü Container – rechts positioniert */
 .menu-container {
     display: flex;
-    align-items: center;
+    align-items: end;
 }
 
 /* Menü Icon */
