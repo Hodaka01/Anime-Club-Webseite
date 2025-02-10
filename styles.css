@@ -47,6 +47,7 @@ body {
     flex-grow: 1;
     display: flex;         /* Macht aus .date-container einen Flex-Container */
     align-items: center;   /* Zentriert den Inhalt vertikal */
+    justify-content: center; /* Optional: Zentriert den Inhalt auch horizontal */
     text-align: center;
     font-size: 18px;
     font-weight: bold;
