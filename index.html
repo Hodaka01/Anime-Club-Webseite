@@ -11,14 +11,19 @@
 <body>
   <!-- Navigation -->
   <header class="navbar">
-    <!-- Datum & Countdown -->
+    <!-- Logo (innerhalb von navbar, links) -->
+    <div class="logo">
+      <img src="images/LOGOJPG" alt="Anime Club Logo">
+    </div>
+    
+    <!-- Datum & Countdown (zentriert) -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
       <input type="date" id="date-picker" style="display: none;">
       <p id="countdown"></p>
     </div>
   
-    <!-- Menü Container -->
+    <!-- Menü Container (rechts) -->
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
@@ -35,9 +40,7 @@
   <!-- Hauptinhalt -->
   <main class="container">
     <h1>Anime Club Webseite</h1>
-    <br>
     <h2>Hallo Clubmitglieder!</h2>
-    <br>
     <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
 
     <!-- Buttons für Regeln & Historie -->
