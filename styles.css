@@ -70,7 +70,7 @@ body {
 
 /* Dropdown-Menü */
 .dropdown {
-    display: block;            /*probe*/
+    display: none;
     position: absolute;
     top: 40px;
     right: 0;
