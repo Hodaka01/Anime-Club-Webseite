@@ -105,29 +105,57 @@ document.addEventListener("DOMContentLoaded", function () {
     // ============================
     // Mitgliederverwaltung
     // ============================
+    
     // Mitglieder laden
     function loadMitglieder() {
         const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
-
+    
         mitglieder.forEach((mitglied, index) => {
+            // Neues Listen-Element
             const li = document.createElement("li");
-            li.textContent = `${mitglied.name} - Lieblingsgenres: ${mitglied.genre} - Lieblingsanime: ${mitglied.anime}`;
-
-            const löschenButton = document.createElement("button");
-            löschenButton.textContent = "Löschen";
-            löschenButton.classList.add("löschen");
-            löschenButton.onclick = () => {
+            li.classList.add("mitglied-item");
+    
+            // Container für die Member-Infos
+            const infoDiv = document.createElement("div");
+            infoDiv.classList.add("mitglied-info");
+    
+            // Name als Überschrift
+            const nameElem = document.createElement("h3");
+            nameElem.textContent = mitglied.name;
+    
+            // Lieblingsgenre
+            const genreElem = document.createElement("p");
+            genreElem.textContent = `Lieblingsgenres: ${mitglied.genre}`;
+    
+            // Lieblingsanime
+            const animeElem = document.createElement("p");
+            animeElem.textContent = `Lieblingsanime: ${mitglied.anime}`;
+    
+            // Alle Infos in infoDiv packen
+            infoDiv.appendChild(nameElem);
+            infoDiv.appendChild(genreElem);
+            infoDiv.appendChild(animeElem);
+    
+            // Löschbutton
+            const loeschenButton = document.createElement("button");
+            loeschenButton.textContent = "Löschen";
+            loeschenButton.classList.add("löschen");
+            loeschenButton.onclick = () => {
                 mitglieder.splice(index, 1);
                 localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
                 loadMitglieder();
             };
-
-            li.appendChild(löschenButton);
+    
+            // Zusammenfügen
+            li.appendChild(infoDiv);
+            li.appendChild(loeschenButton);
+    
+            // Ab in die UL-Liste
             mitgliedListe.appendChild(li);
         });
     }
-
+    
     // Mitglied hinzufügen
     window.hinzufügenMitglied = function () {
         const name = document.getElementById("mitglied-name").value;
