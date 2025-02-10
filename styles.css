@@ -13,13 +13,13 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Elemente werden an den Enden positioniert */
     padding: 10px 20px;
     background: #212121;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     z-index: 100;
-    min-height: 80px;  /* Stellt sicher, dass genügend Höhe vorhanden ist */
-    position: relative;  /* Falls du noch absolute Positionierungen brauchst */
+    min-height: 80px;
+    position: relative;
 }
 
 
@@ -42,7 +42,10 @@ body {
 
 /* Datum & Countdown */
 .date-container {
-    flex: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
