@@ -63,9 +63,12 @@ body {
     margin-top: 5px;
 }
 
-/* Menü Container */
+/* Menü Container – rechts positioniert */
 .menu-container {
-    position: relative;
+    position: absolute;
+    right: 20px;              /* Abstand vom rechten Rand */
+    top: 50%;                 /* Vertikal zentriert */
+    transform: translateY(-50%);
     display: inline-block;
     cursor: pointer;
     overflow: visible;
@@ -76,7 +79,6 @@ body {
     position: relative;
     z-index: 10;
     display: flex;
-    align-items: right;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
