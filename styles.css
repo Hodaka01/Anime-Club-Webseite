@@ -283,14 +283,18 @@ button.löschen:hover {
   }
   
   .navbar {
-    flex-direction: row;  /* Ändert die Anordnung von vertikal (column) zu horizontal (row) */
+    flex-direction: row; /* Damit Datum/Countdown und Menü-Icon in einer Zeile bleiben */
     align-items: center;
-    justify-content: space-between; /* Datum/Countdown links, Menü-Icon rechts */
+    justify-content: space-between;
     padding: 15px 10px;
-    min-height: 80px; /* Falls du eine Mindesthöhe beibehalten möchtest */
+    min-height: 80px;
   }
   
   .date-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin-bottom: 0;  /* Abstand entfernen, damit alles in einer Zeile sitzt */
     font-size: 16px;
   }
@@ -306,7 +310,7 @@ button.löschen:hover {
     right: auto;
     top: auto;
     transform: none;
-    margin-top: 0; /* Hier den zusätzlichen Abstand entfernen */
+    margin-top: 0; /* Den zusätzlichen Abstand entfernen */
   }
   
   .container {
