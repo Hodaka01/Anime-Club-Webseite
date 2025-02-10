@@ -291,10 +291,6 @@ button.löschen:hover {
   }
   
   .date-container {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
     margin-bottom: 0;  /* Abstand entfernen, damit alles in einer Zeile sitzt */
     font-size: 16px;
   }
