@@ -283,12 +283,13 @@ button.löschen:hover {
   }
   
   .navbar {
-    flex-direction: row; /* Damit Datum/Countdown und Menü-Icon in einer Zeile bleiben */
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 10px;
-    min-height: 80px;
-  }
+     position: relative; /* Hinzufügen, um als Positionierungsreferenz zu dienen */
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     padding: 15px 10px;
+     min-height: 80px;
+   }
   
   .date-container {
     position: absolute;
