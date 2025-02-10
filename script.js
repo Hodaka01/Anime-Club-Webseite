@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // ============================
+    // Datum, Countdown & Mitglieder
+    // ============================
     const eventDateDisplay = document.getElementById("event-date");
     const datePicker = document.getElementById("date-picker");
     const countdownDisplay = document.getElementById("countdown");
     const mitgliedListe = document.getElementById("mitglied-liste");
-    const menuContainer = document.querySelector(".menu-container");
 
     // 🗓️ Berechnet den nächsten zweiten Sonntag im Monat
     function calculateNextSecondSunday() {
@@ -66,39 +68,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateDateDisplay();
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuContainer = document.querySelector(".menu-container");
-        const menuIcon = document.querySelector(".menu-icon");
-        const dropdown = document.querySelector(".dropdown");
-    
-        // 📌 Menü öffnen und schließen beim Klicken
-        menuIcon.addEventListener("click", function (event) {
-            event.stopPropagation(); // Verhindert, dass das Event sofort geschlossen wird
-            dropdown.classList.toggle("show");
-        });
-    
-        // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
-        menuContainer.addEventListener("mouseenter", function () {
-            dropdown.classList.add("show");
-        });
-    
-        // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
-        menuContainer.addEventListener("mouseleave", function (event) {
-            // Schließe das Menü nur, wenn die Maus das gesamte Menü UND das Dropdown verlässt
-            if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
-                dropdown.classList.remove("show");
-            }
-        });
-    
-        // 📌 Menü schließt sich, wenn man außerhalb klickt
-        document.addEventListener("click", function (event) {
-            if (!menuContainer.contains(event.target)) {
-                dropdown.classList.remove("show");
-            }
-        });
+    // ============================
+    // Dropdown-Menü
+    // ============================
+    // Selektoren für das Menü
+    const menuContainer = document.querySelector(".menu-container");
+    const menuIcon = document.querySelector(".menu-icon");
+    const dropdown = document.querySelector(".dropdown");
+
+    // 📌 Menü öffnen und schließen beim Klicken
+    menuIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Verhindert, dass das Event sofort von einem globalen Listener abgefangen wird
+        dropdown.classList.toggle("show");
     });
 
-    // 📌 Mitgliederverwaltung: Mitglieder laden
+    // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
+    menuContainer.addEventListener("mouseenter", function () {
+        dropdown.classList.add("show");
+    });
+
+    // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
+    menuContainer.addEventListener("mouseleave", function (event) {
+        // Schließe das Menü nur, wenn die Maus weder über den Container noch über das Dropdown fährt
+        if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
+            dropdown.classList.remove("show");
+        }
+    });
+
+    // 📌 Menü schließt sich, wenn man außerhalb klickt
+    document.addEventListener("click", function (event) {
+        if (!menuContainer.contains(event.target)) {
+            dropdown.classList.remove("show");
+        }
+    });
+
+    // ============================
+    // Mitgliederverwaltung
+    // ============================
+    // Mitglieder laden
     function loadMitglieder() {
         const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
         mitgliedListe.innerHTML = "";
@@ -121,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 📌 Mitgliederverwaltung: Mitglied hinzufügen
-    function hinzufügenMitglied() {
+    // Mitglied hinzufügen
+    window.hinzufügenMitglied = function () {
         const name = document.getElementById("mitglied-name").value;
         const genre = document.getElementById("mitglied-genre").value;
         const anime = document.getElementById("mitglied-anime").value;
@@ -137,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("mitglied-genre").value = "";
             document.getElementById("mitglied-anime").value = "";
         }
-    }
+    };
 
-    // Lade Mitglieder beim Start
+    // Mitglieder beim Start laden
     loadMitglieder();
 });
