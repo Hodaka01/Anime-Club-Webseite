@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anime Club Webseite">
-    <title>Anime Club Webseite</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anime Club Webseite">
+  <title>Anime Club Webseite</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <!-- Datum & Countdown -->
-        <div class="date-container">
-            <span id="event-date" onclick="toggleDatePicker()"></span>
-            <input type="date" id="date-picker" style="display: none;">
-            <p id="countdown"></p>
-        </div>
-    
-        <!-- Menü Container -->
-        <div class="menu-container">
-            <div class="menu-icon">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="dropdown">
-                <a href="index.html">Home</a>
-                <a href="mitglieder.html">Mitglieder</a>
-            </div>
-        </div>
-    </header>
+  <!-- Navigation -->
+  <header class="navbar">
+    <!-- Datum & Countdown -->
+    <div class="date-container">
+      <span id="event-date" onclick="toggleDatePicker()"></span>
+      <!-- Das Inline-Style 'display: none;' kann beibehalten werden, da es durch JS gesteuert wird -->
+      <input type="date" id="date-picker" style="display: none;">
+      <p id="countdown"></p>
+    </div>
+  
+    <!-- Menü Container -->
+    <div class="menu-container">
+      <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="dropdown">
+        <a href="index.html">Home</a>
+        <a href="mitglieder.html">Mitglieder</a>
+      </div>
+    </div>
+  </header>
         
-    <!-- Hauptinhalt -->
-    <main class="container">
-        <h1>Anime Club Webseite</h1>
-        <h2>Hallo Clubmitglieder!</h2>
-        <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
+  <!-- Hauptinhalt -->
+  <main class="container">
+    <h1>Anime Club Webseite</h1>
+    <h2>Hallo Clubmitglieder!</h2>
+    <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
 
-        <!-- Buttons für Regeln & Historie -->
-        <div class="button-container">
-            <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Regeln</a>
-            <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Historie</a>
-        </div>
-    </main>
+    <!-- Buttons für Regeln & Historie -->
+    <div class="button-container">
+      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Regeln</a>
+      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Historie</a>
+    </div>
+  </main>
 </body>
 </html>
