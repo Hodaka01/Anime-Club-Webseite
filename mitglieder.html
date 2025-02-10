@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mitglieder des Anime Clubs">
-    <title>Mitglieder - Anime Club</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mitglieder des Anime Clubs">
+  <title>Mitglieder - Anime Club</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <!-- Datum & Countdown -->
-        <div class="date-container">
-            <span id="event-date" onclick="toggleDatePicker()"></span>
-            <input type="date" id="date-picker" style="display: none;">
-            <p id="countdown"></p>
+  <!-- Navigation -->
+  <header class="navbar">
+    <!-- Datum & Countdown -->
+    <div class="date-container">
+      <span id="event-date" onclick="toggleDatePicker()"></span>
+      <input type="date" id="date-picker" style="display: none;">
+      <p id="countdown"></p>
+    </div>
+  
+    <!-- Menü Container -->
+    <div class="menu-container">
+      <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="dropdown">
+        <a href="index.html">Home</a>
+        <a href="mitglieder.html">Mitglieder</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mitgliederbereich -->
+  <main class="container">
+    <h1>Mitgliederliste</h1>
+    <div class="mitglieder-container">
+      <!-- Gründer Mitglieder -->
+      <div class="gründer">
+        <h2>Gründer</h2>
+        <ul>
+          <li>Anas</li>
+          <li>Lea</li>
+          <li>Anny</li>
+          <li>Jenny</li>
+        </ul>
+      </div>
+
+      <!-- Normale Mitglieder -->
+      <div class="normale-mitglieder">
+        <h2>Normale Mitglieder</h2>
+        <ul id="mitglied-liste"></ul>
+
+        <!-- Formular zum Hinzufügen eines neuen Mitglieds -->
+        <div class="mitglied-form">
+          <input type="text" id="mitglied-name" placeholder="Name">
+          <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
+          <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
+          <button onclick="hinzufügenMitglied()">Hinzufügen</button>
         </div>
-    
-        <!-- Menü Container -->
-        <div class="menu-container">
-            <div class="menu-icon">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="dropdown">
-                <a href="index.html">Home</a>
-                <a href="mitglieder.html">Mitglieder</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mitgliederbereich -->
-    <main class="container">
-        <h1>Mitgliederliste</h1>
-
-        <div class="mitglieder-container">
-            <!-- Gründer Mitglieder -->
-            <div class="gründer">
-                <h2>Gründer</h2>
-                <ul>
-                    <li>Anas</li>
-                    <li>Lea</li>
-                    <li>Anny</li>
-                    <li>Jenny</li>
-                </ul>
-            </div>
-
-            <!-- Normale Mitglieder -->
-            <div class="normale-mitglieder">
-                <h2>Normale Mitglieder</h2>
-                <ul id="mitglied-liste"></ul>
-
-                <!-- Formular zum Hinzufügen eines neuen Mitglieds -->
-                <div class="mitglied-form">
-                    <input type="text" id="mitglied-name" placeholder="Name">
-                    <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
-                    <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
-                    <button onclick="hinzufügenMitglied()">Hinzufügen</button>
-                </div>
-            </div>
-        </div>
-    </main>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
