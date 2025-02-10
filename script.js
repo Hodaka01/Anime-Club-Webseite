@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
         menuContainer.addEventListener("mouseleave", function (event) {
-            if (!menuContainer.contains(event.relatedTarget)) {
+            // Schließe das Menü nur, wenn die Maus das gesamte Menü UND das Dropdown verlässt
+            if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
                 menuContainer.classList.remove("show");
             }
         });
