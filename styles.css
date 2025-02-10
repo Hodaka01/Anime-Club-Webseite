@@ -65,8 +65,14 @@ body {
 
 /* Menü Container – rechts positioniert */
 .menu-container {
+    position: absolute;
+    right: 20px;                  
+    top: 50%;                     
+    transform: translateY(-50%);  
     display: flex;
-    align-items: end;
+    align-items: center;
+    cursor: pointer;
+    overflow: visible;
 }
 
 /* Menü Icon */
@@ -94,7 +100,7 @@ body {
     display: none; /* Startet versteckt */
     position: absolute;
     top: 40px;
-    right: 0;
+    right: 10px;
     background: #282828;
     padding: 10px 0;
     border-radius: 5px;
