@@ -11,18 +11,17 @@ body {
 
 /* Navigation */
 .navbar {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     padding: 10px 20px;
     background: #212121;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     z-index: 100;
+    min-height: 80px;  /* Stellt sicher, dass genügend Höhe vorhanden ist */
+    position: relative;  /* Falls du noch absolute Positionierungen brauchst */
 }
+
 
 /* Styling für den Datepicker im Datumcontainer */
 #date-picker {
@@ -43,14 +42,11 @@ body {
 
 /* Datum & Countdown */
 .date-container {
-    position: absolute;
-    left: 50%;             /* Horizontal in der Mitte */
-    top: 50%;              /* Vertikal in der Mitte */
-    transform: translate(-50%, -50%);  /* Korrektur, sodass der Mittelpunkt des Containers exakt in der Mitte liegt */
-    display: flex;         /* Macht aus .date-container einen Flex-Container */
-    flex-direction: column; /* Elemente werden nun untereinander angeordnet */
-    align-items: center;   /* Zentriert den Inhalt vertikal */
-    justify-content: center; /* Optional: Zentriert den Inhalt auch horizontal */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -66,13 +62,8 @@ body {
 
 /* Menü Container – rechts positioniert */
 .menu-container {
-    position: absolute;
-    right: 20px;              /* Abstand vom rechten Rand */
-    top: 50%;                 /* Vertikal zentriert */
-    transform: translateY(-50%);
-    display: inline-block;
-    cursor: pointer;
-    overflow: visible;
+    display: flex;
+    align-items: center;
 }
 
 /* Menü Icon */
