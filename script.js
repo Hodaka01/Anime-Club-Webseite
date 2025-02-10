@@ -77,6 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
             menuContainer.classList.toggle("show");
         });
     
+        // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
+        menuContainer.addEventListener("mouseenter", function () {
+            menuContainer.classList.add("show");
+        });
+    
+        // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
+        menuContainer.addEventListener("mouseleave", function (event) {
+            if (!menuContainer.contains(event.relatedTarget)) {
+                menuContainer.classList.remove("show");
+            }
+        });
+    
         // 📌 Menü schließt sich, wenn man außerhalb klickt
         document.addEventListener("click", function (event) {
             if (!menuContainer.contains(event.target)) {
