@@ -70,7 +70,10 @@ body {
 
 /* Dropdown-Menü */
 .dropdown {
-    display: none;
+    visibility: hidden; /* Startet versteckt */
+    opacity: 0; /* Transparenz = 0 */
+    transform: translateY(-10px); /* Startposition leicht nach oben verschoben */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Sanfte Animation */
     position: absolute;
     top: 40px;
     right: 0;
@@ -81,6 +84,14 @@ body {
     z-index: 10;
     min-width: 150px;
 }
+
+/* Wenn `.show` aktiv ist */
+.dropdown.show {
+    visibility: visible; /* Menü wird sichtbar */
+    opacity: 1; /* Volle Sichtbarkeit */
+    transform: translateY(0); /* Setzt die Position zurück */
+}
+
 
 /* Dropdown-Links */
 .dropdown a {
