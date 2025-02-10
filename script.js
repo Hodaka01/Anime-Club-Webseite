@@ -79,21 +79,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
         menuContainer.addEventListener("mouseenter", function () {
-            menuContainer.classList.add("show");
+            dropdown.classList.add("show");
         });
     
         // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
         menuContainer.addEventListener("mouseleave", function (event) {
             // Schließe das Menü nur, wenn die Maus das gesamte Menü UND das Dropdown verlässt
             if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
-                menuContainer.classList.remove("show");
+                dropdown.classList.remove("show");
             }
         });
     
         // 📌 Menü schließt sich, wenn man außerhalb klickt
         document.addEventListener("click", function (event) {
             if (!menuContainer.contains(event.target)) {
-                menuContainer.classList.remove("show");
+                dropdown.classList.remove("show");
             }
         });
     });
