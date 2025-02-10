@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // 📌 Menü öffnen und schließen beim Klicken
         menuIcon.addEventListener("click", function (event) {
-            /*event.stopPropagation();*/
-            menuContainer.classList.toggle("show");
+            event.stopPropagation(); // Verhindert, dass das Event sofort geschlossen wird
+            dropdown.classList.toggle("show");
         });
     
         // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
