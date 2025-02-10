@@ -46,7 +46,6 @@ body {
     position: absolute;
     left: 50%;                    /* Startet in der Mitte */
     transform: translateX(-50%);  /* Verschiebt den Container um die Hälfte seiner Breite nach links, sodass er exakt zentriert ist */
-    flex-grow: 1;
     display: flex;         /* Macht aus .date-container einen Flex-Container */
     flex-direction: column; /* Elemente werden nun untereinander angeordnet */
     align-items: center;   /* Zentriert den Inhalt vertikal */
@@ -77,6 +76,7 @@ body {
     position: relative;
     z-index: 10;
     display: flex;
+    align-items: right;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
