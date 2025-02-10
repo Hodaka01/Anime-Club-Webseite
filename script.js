@@ -1,179 +1,149 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // ============================
-    // Datum, Countdown & Mitglieder
-    // ============================
-    const eventDateDisplay = document.getElementById("event-date");
-    const datePicker = document.getElementById("date-picker");
-    const countdownDisplay = document.getElementById("countdown");
-    const mitgliedListe = document.getElementById("mitglied-liste");
+document.addEventListener("DOMContentLoaded", () => {
+  // ============================
+  // Element-Selektoren
+  // ============================
+  const eventDateDisplay = document.getElementById("event-date");
+  const datePicker = document.getElementById("date-picker");
+  const countdownDisplay = document.getElementById("countdown");
+  const mitgliedListe = document.getElementById("mitglied-liste");
 
-    // 🗓️ Berechnet den nächsten zweiten Sonntag im Monat
-    function calculateNextSecondSunday() {
-        let today = new Date();
-        let month = today.getMonth();
-        let year = today.getFullYear();
-        
-        let firstDay = new Date(year, month, 1).getDay();
-        let secondSunday = firstDay === 0 ? 8 : 15 - firstDay;
+  // ============================
+  // Datum & Countdown
+  // ============================
+  /**
+   * Berechnet den zweiten Sonntag im aktuellen Monat.
+   * Falls der 1. ein Sonntag ist, wird der 8. als zweiter Sonntag genommen,
+   * andernfalls der (15 - erster Wochentag)-te Tag.
+   */
+  const calculateNextSecondSunday = () => {
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+    const firstDay = new Date(year, month, 1).getDay();
+    const secondSunday = firstDay === 0 ? 8 : 15 - firstDay;
+    return new Date(year, month, secondSunday).toISOString();
+  };
 
-        return new Date(year, month, secondSunday).toISOString();
-    }
+  const getEventDate = () =>
+    localStorage.getItem("eventDate") || calculateNextSecondSunday();
 
-    // 🗂️ Holt das gespeicherte Datum oder setzt das Standarddatum
-    function getEventDate() {
-        return localStorage.getItem("eventDate") || calculateNextSecondSunday();
-    }
-
-    // 💾 Speichert das Datum lokal
-    function setEventDate(date) {
-        localStorage.setItem("eventDate", date);
-        updateDateDisplay();
-    }
-
-    // ⏳ Berechnet und zeigt den Countdown an
-    function updateCountdown(eventDate) {
-        const today = new Date();
-        const targetDate = new Date(eventDate);
-        const diffTime = targetDate - today;
-        const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
-    }
-
-    // 📅 Aktualisiert die Datumsanzeige
-    function updateDateDisplay() {
-        const eventDate = getEventDate();
-        eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        });
-        updateCountdown(eventDate);
-    }
-
-    // 📌 Öffnet/Schließt den Datepicker
-    window.toggleDatePicker = function () {
-        datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
-    };
-
-    datePicker.addEventListener("change", function () {
-        setEventDate(this.value);
-    });
-
-    // Falls kein Datum gespeichert ist, setze das Standarddatum
-    if (!localStorage.getItem("eventDate")) {
-        setEventDate(calculateNextSecondSunday());
-    }
-
+  const setEventDate = (date) => {
+    localStorage.setItem("eventDate", date);
     updateDateDisplay();
+  };
 
-    // ============================
-    // Dropdown-Menü
-    // ============================
-    // Selektoren für das Menü
-    const menuContainer = document.querySelector(".menu-container");
-    const menuIcon = document.querySelector(".menu-icon");
-    const dropdown = document.querySelector(".dropdown");
+  const updateCountdown = (eventDate) => {
+    const today = new Date();
+    const targetDate = new Date(eventDate);
+    const diffTime = targetDate - today;
+    const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
+  };
 
-    // 📌 Menü öffnen und schließen beim Klicken
-    menuIcon.addEventListener("click", function (event) {
-        event.stopPropagation(); // Verhindert, dass das Event sofort von einem globalen Listener abgefangen wird
-        dropdown.classList.toggle("show");
+  const updateDateDisplay = () => {
+    const eventDate = getEventDate();
+    eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
     });
+    updateCountdown(eventDate);
+  };
 
-    // 📌 Menü bleibt offen, wenn man mit der Maus darüberfährt
-    menuContainer.addEventListener("mouseenter", function () {
-        dropdown.classList.add("show");
-    });
+  // Öffnet/Schließt den Datepicker
+  window.toggleDatePicker = () => {
+    datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
+  };
 
-    // 📌 Menü schließt, wenn die Maus das Menü verlässt (aber nicht direkt in Dropdown!)
-    menuContainer.addEventListener("mouseleave", function (event) {
-        // Schließe das Menü nur, wenn die Maus weder über den Container noch über das Dropdown fährt
-        if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
-            dropdown.classList.remove("show");
-        }
-    });
+  datePicker.addEventListener("change", function () {
+    setEventDate(this.value);
+  });
 
-    // 📌 Menü schließt sich, wenn man außerhalb klickt
-    document.addEventListener("click", function (event) {
-        if (!menuContainer.contains(event.target)) {
-            dropdown.classList.remove("show");
-        }
-    });
+  if (!localStorage.getItem("eventDate")) {
+    setEventDate(calculateNextSecondSunday());
+  }
+  updateDateDisplay();
 
-    // ============================
-    // Mitgliederverwaltung
-    // ============================
-    
-    // Mitglieder laden
-    function loadMitglieder() {
-        const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
-        mitgliedListe.innerHTML = "";
-    
-        mitglieder.forEach((mitglied, index) => {
-            // Neues Listen-Element
-            const li = document.createElement("li");
-            li.classList.add("mitglied-item");
-    
-            // Container für die Member-Infos
-            const infoDiv = document.createElement("div");
-            infoDiv.classList.add("mitglied-info");
-    
-            // Name als Überschrift
-            const nameElem = document.createElement("h3");
-            nameElem.textContent = mitglied.name;
-    
-            // Lieblingsgenre
-            const genreElem = document.createElement("p");
-            genreElem.textContent = `Lieblingsgenres: ${mitglied.genre}`;
-    
-            // Lieblingsanime
-            const animeElem = document.createElement("p");
-            animeElem.textContent = `Lieblingsanime: ${mitglied.anime}`;
-    
-            // Alle Infos in infoDiv packen
-            infoDiv.appendChild(nameElem);
-            infoDiv.appendChild(genreElem);
-            infoDiv.appendChild(animeElem);
-    
-            // Löschbutton
-            const loeschenButton = document.createElement("button");
-            loeschenButton.textContent = "Löschen";
-            loeschenButton.classList.add("löschen");
-            loeschenButton.onclick = () => {
-                mitglieder.splice(index, 1);
-                localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-                loadMitglieder();
-            };
-    
-            // Zusammenfügen
-            li.appendChild(infoDiv);
-            li.appendChild(loeschenButton);
-    
-            // Ab in die UL-Liste
-            mitgliedListe.appendChild(li);
-        });
+  // ============================
+  // Dropdown-Menü
+  // ============================
+  const menuContainer = document.querySelector(".menu-container");
+  const menuIcon = document.querySelector(".menu-icon");
+  const dropdown = document.querySelector(".dropdown");
+
+  menuIcon.addEventListener("click", (event) => {
+    event.stopPropagation();
+    dropdown.classList.toggle("show");
+  });
+
+  menuContainer.addEventListener("mouseenter", () => dropdown.classList.add("show"));
+  menuContainer.addEventListener("mouseleave", (event) => {
+    if (!menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
+      dropdown.classList.remove("show");
     }
-    
-    // Mitglied hinzufügen
-    window.hinzufügenMitglied = function () {
-        const name = document.getElementById("mitglied-name").value;
-        const genre = document.getElementById("mitglied-genre").value;
-        const anime = document.getElementById("mitglied-anime").value;
+  });
 
-        if (name && genre && anime) {
-            const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
-            mitglieder.push({ name, genre, anime });
-            localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
-            loadMitglieder();
+  document.addEventListener("click", (event) => {
+    if (!menuContainer.contains(event.target)) {
+      dropdown.classList.remove("show");
+    }
+  });
 
-            document.getElementById("mitglied-name").value = "";
-            document.getElementById("mitglied-genre").value = "";
-            document.getElementById("mitglied-anime").value = "";
-        }
-    };
+  // ============================
+  // Mitgliederverwaltung
+  // ============================
+  const loadMitglieder = () => {
+    const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+    mitgliedListe.innerHTML = "";
+    mitglieder.forEach((mitglied, index) => {
+      const li = document.createElement("li");
+      li.classList.add("mitglied-item");
 
-    // Mitglieder beim Start laden
-    loadMitglieder();
+      const infoDiv = document.createElement("div");
+      infoDiv.classList.add("mitglied-info");
+
+      const nameElem = document.createElement("h3");
+      nameElem.textContent = mitglied.name;
+
+      const genreElem = document.createElement("p");
+      genreElem.textContent = `Lieblingsgenres: ${mitglied.genre}`;
+
+      const animeElem = document.createElement("p");
+      animeElem.textContent = `Lieblingsanime: ${mitglied.anime}`;
+
+      infoDiv.append(nameElem, genreElem, animeElem);
+
+      const loeschenButton = document.createElement("button");
+      loeschenButton.textContent = "Löschen";
+      loeschenButton.classList.add("löschen");
+      loeschenButton.addEventListener("click", () => {
+        mitglieder.splice(index, 1);
+        localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+        loadMitglieder();
+      });
+
+      li.append(infoDiv, loeschenButton);
+      mitgliedListe.appendChild(li);
+    });
+  };
+
+  window.hinzufuegenMitglied = () => {
+    const name = document.getElementById("mitglied-name").value.trim();
+    const genre = document.getElementById("mitglied-genre").value.trim();
+    const anime = document.getElementById("mitglied-anime").value.trim();
+
+    if (name && genre && anime) {
+      const mitglieder = JSON.parse(localStorage.getItem("mitglieder")) || [];
+      mitglieder.push({ name, genre, anime });
+      localStorage.setItem("mitglieder", JSON.stringify(mitglieder));
+      loadMitglieder();
+
+      document.getElementById("mitglied-name").value = "";
+      document.getElementById("mitglied-genre").value = "";
+      document.getElementById("mitglied-anime").value = "";
+    }
+  };
+
+  loadMitglieder();
 });
