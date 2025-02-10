@@ -253,3 +253,36 @@ button.löschen:hover {
         flex-direction: column;
     }
 }
+
+/* ===================================== */
+/* Gestaltung für die einzelnen Mitglieder */
+/* ===================================== */
+
+/* Jedes Listenelement bekommt etwas Abstand und wirkt wie eine „Karte“ */
+.mitglied-item {
+    display: flex;                   /* Inhalt nebeneinander (Text links, Button rechts) */
+    justify-content: space-between; 
+    align-items: center;
+    background: #444;               /* dunkler Hintergrund abgesetzt vom Container */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Der Teil, wo die Member-Daten stehen */
+.mitglied-info {
+    text-align: left;               /* Überschriften & Text linksbündig */
+}
+
+/* Der Name auffälliger als Titel */
+.mitglied-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #ff6f61;
+}
+
+/* Die Unterzeilen etwas dezenter */
+.mitglied-info p {
+    margin: 5px 0 0;
+    color: #ddd;
+}
