@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // 📌 Menü öffnen und schließen beim Klicken
         menuIcon.addEventListener("click", function (event) {
-            event.stopPropagation();
+            /*event.stopPropagation();*/
             menuContainer.classList.toggle("show");
         });
     
