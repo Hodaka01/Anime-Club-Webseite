@@ -1,16 +1,28 @@
 /* ==========================================================================
-   GLOBAL STYLES & BASISEINSTELLUNGEN
+   UNIVERSAL & GLOBAL STYLES
    ========================================================================== */
+
+/* Box-Sizing für alle Elemente (vereinfacht Breiten-/Höhen-Berechnungen) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Grundlegende Einstellungen für HTML & Body */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;  /* Verhindert horizontales Scrollen */
+}
+
 body {
     background: #181818;            /* Dunkler Hintergrund (Dark Mode) */
     color: white;                   /* Weiße Schrift für hohen Kontrast */
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     text-align: center;
-    overflow-x: hidden;             /* Verhindert horizontales Scrollen */
 }
-
 
 /* ==========================================================================
    NAVIGATION & HEADER-BEREICH
@@ -135,12 +147,11 @@ body {
     background-color: #383838;
 }
 
-
 /* ==========================================================================
    HAUPTINHALT & LAYOUT
    ========================================================================== */
 
-/* Hauptcontainer (Inhalt der Seite) */
+/* Hauptcontainer für den Seiteninhalt */
 .container {
     margin-top: 100px;
     padding: 30px;
@@ -176,7 +187,6 @@ body {
     background-color: #e63946;
 }
 
-
 /* ==========================================================================
    MITGLIEDERBEREICH (MEMBERS SECTION)
    ========================================================================== */
@@ -190,7 +200,7 @@ body {
     margin-top: 20px;
 }
 
-/* Einzelne Mitgliederbereiche (Boxen) */
+/* Boxen für Gründer und normale Mitglieder */
 .gründer, .normale-mitglieder {
     background: #3c3c3c;
     padding: 20px;
@@ -201,9 +211,11 @@ body {
     text-align: center;
 }
 
-/* Formular für das Hinzufügen von Mitgliedern */
+/* ==========================================================================
+   FORMULAR FÜR MITGLIEDER
+   ========================================================================== */
 
-/* Eingabefelder */
+/* Eingabefelder im Formular */
 .mitglied-form input {
     display: block;
     width: 90%;
@@ -235,13 +247,13 @@ body {
    MITGLIEDERLISTE & EINZELNE MITGLIEDER
    ========================================================================== */
 
-/* Grundlegendes List-Reset */
+/* Reset für Listen */
 ul {
     list-style: none;
     padding: 0;
 }
 
-/* Allgemeine Listenelemente (Mitgliederliste) */
+/* Listenelemente (Mitgliederliste) */
 li {
     background: #444;
     padding: 10px;
@@ -252,7 +264,7 @@ li {
     align-items: center;
 }
 
-/* Individuelle Mitgliederkarte (für Normale Mitglieder) */
+/* Einzelne Mitgliederkarte */
 .mitglied-item {
     display: flex;
     justify-content: space-between;
@@ -293,12 +305,11 @@ button.löschen:hover {
     background: darkred;
 }
 
-
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE UND TABLET)
+   RESPONSIVE DESIGN FÜR MOBILE & TABLET (KEIN HORIZONTALES SCROLLEN)
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Navigation: Elemente werden gestapelt */
+    /* Navigation: Elemente werden gestapelt, um in das Sichtfeld zu passen */
     .navbar {
         flex-direction: column;
         align-items: center;
@@ -307,7 +318,7 @@ button.löschen:hover {
         min-height: auto;
     }
     
-    /* Datum & Countdown: Positionierung anpassen */
+    /* Datum & Countdown: Relative Positionierung, damit nichts aus dem Viewport ragt */
     .date-container {
         position: relative;
         left: 0;
@@ -317,14 +328,14 @@ button.löschen:hover {
         font-size: 16px;
     }
     
-    /* Datepicker: Position beibehalten, aber relative Anordnung */
+    /* Datepicker: Bleibt zentriert unter dem Datum */
     #date-picker {
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
     }
     
-    /* Menü-Container: Positionierung relativ, damit es unter das Datum rutscht */
+    /* Menü-Container: Relative Positionierung, um horizontalen Überlauf zu vermeiden */
     .menu-container {
         position: relative;
         right: auto;
@@ -333,14 +344,14 @@ button.löschen:hover {
         margin-top: 10px;
     }
     
-    /* Hauptcontainer: Weniger Abstand und angepasste Breite */
+    /* Hauptcontainer: Breite so anpassen, dass er immer im sichtbaren Bereich liegt */
     .container {
         margin-top: 80px;
         padding: 20px;
         width: 95%;
     }
     
-    /* Mitgliederbereiche: Vertikal statt nebeneinander */
+    /* Mitgliederbereich: Elemente vertikal stapeln, damit sie nicht über den Rand hinausgehen */
     .mitglieder-container {
         flex-direction: column;
         align-items: center;
@@ -356,7 +367,7 @@ button.löschen:hover {
         gap: 10px;
     }
     
-    /* Menü-Icon: Größeres Touch-Ziel */
+    /* Menü-Icon: Größeres Touch-Ziel für mobile Endgeräte */
     .menu-icon {
         width: 35px;
         height: 28px;
