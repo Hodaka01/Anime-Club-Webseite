@@ -1,17 +1,24 @@
-/* Allgemeine Stile */
+/* ==========================================================================
+   GLOBAL STYLES & BASISEINSTELLUNGEN
+   ========================================================================== */
 body {
-    background: #181818; /* Dark Mode Hintergrund */
-    color: white; /* Weiße Schrift für Kontrast */
+    background: #181818;            /* Dunkler Hintergrund (Dark Mode) */
+    color: white;                   /* Weiße Schrift für hohen Kontrast */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    overflow-x: hidden;             /* Verhindert horizontales Scrollen */
 }
 
-/* Navigation */
+
+/* ==========================================================================
+   NAVIGATION & HEADER-BEREICH
+   ========================================================================== */
+
+/* Navbar-Container */
 .navbar {
-    position: relative; /* Bezugspunkt für absolute Positionierung der Kinder */
+    position: relative;             /* Basis für absolute Positionierung der Kinder */
     display: flex;
     align-items: center;
     justify-content: space-between; /* Elemente an den Enden */
@@ -22,31 +29,14 @@ body {
     min-height: 80px;
 }
 
-/* Styling für den Datepicker im Datumcontainer */
-#date-picker {
-    display: none;  /* Anfangs versteckt */
-    background: #282828;
-    border: 1px solid #555;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 16px;
-    position: absolute;
-    top: 100%;         /* Direkt unterhalb des angezeigten Datums */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 200;      /* Damit er vor anderen Elementen liegt */
-    width: auto;       /* Oder eine feste Breite, falls gewünscht */
-}
-
-/* Datum & Countdown – exakt in der Mitte der Navbar */
+/* Container für Datum und Countdown (zentriert in der Navbar) */
 .date-container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column; /* Datum oben, Countdown darunter */
+    flex-direction: column;         /* Datum oben, Countdown darunter */
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -55,6 +45,7 @@ body {
     color: white;
 }
 
+/* Countdown-Text */
 #countdown {
     font-size: 16px;
     font-weight: normal;
@@ -62,11 +53,28 @@ body {
     margin-top: 5px;
 }
 
-/* Menü Container – absolut rechts positioniert */
+/* Datepicker-Feld (zunächst versteckt) */
+#date-picker {
+    display: none;
+    background: #282828;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    position: absolute;
+    top: 100%;                      /* Direkt unter dem angezeigten Datum */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;                   /* Steht vor anderen Elementen */
+    width: auto;
+}
+
+/* Menü-Container (enthält Icon und Dropdown) */
 .menu-container {
     position: absolute;
-    right: 20px;              /* Abstand vom rechten Rand */
-    top: 50%;                 /* Vertikal zentriert */
+    right: 20px;                    /* Abstand vom rechten Rand */
+    top: 50%;                       /* Vertikal zentriert */
     transform: translateY(-50%);
     display: flex;
     align-items: center;
@@ -74,7 +82,7 @@ body {
     overflow: visible;
 }
 
-/* Menü Icon */
+/* Menü-Icon (Hamburger-Menü) */
 .menu-icon {
     position: relative;
     z-index: 10;
@@ -84,9 +92,10 @@ body {
     width: 30px;
     height: 24px;
     cursor: pointer;
-    padding: 10px; /* Erhöht den Klickbereich */
+    padding: 10px;                  /* Erhöht den Klickbereich */
 }
 
+/* Einzelne Balken im Menü-Icon */
 .menu-icon div {
     height: 4px;
     width: 100%;
@@ -94,9 +103,9 @@ body {
     border-radius: 2px;
 }
 
-/* Dropdown-Menü */
+/* Dropdown-Menü (Startet versteckt) */
 .dropdown {
-    display: none; /* Startet versteckt */
+    display: none;
     position: absolute;
     top: 40px;
     right: 10px;
@@ -108,11 +117,12 @@ body {
     min-width: 150px;
 }
 
+/* Sichtbar, wenn aktiv (Klasse .show wird hinzugefügt) */
 .dropdown.show {
-    display: block; /* Menü wird sichtbar */
+    display: block;
 }
 
-/* Dropdown-Links */
+/* Styling für Links im Dropdown */
 .dropdown a {
     display: block;
     padding: 10px 20px;
@@ -125,7 +135,12 @@ body {
     background-color: #383838;
 }
 
-/* Hauptinhalt */
+
+/* ==========================================================================
+   HAUPTINHALT & LAYOUT
+   ========================================================================== */
+
+/* Hauptcontainer (Inhalt der Seite) */
 .container {
     margin-top: 100px;
     padding: 30px;
@@ -139,7 +154,7 @@ body {
     text-align: center;
 }
 
-/* Button Container */
+/* Container für Buttons (z.B. für Regeln & Historie) */
 .button-container {
     display: flex;
     justify-content: center;
@@ -161,7 +176,12 @@ body {
     background-color: #e63946;
 }
 
-/* Mitgliederbereich */
+
+/* ==========================================================================
+   MITGLIEDERBEREICH (MEMBERS SECTION)
+   ========================================================================== */
+
+/* Container, der die Mitgliederbereiche (Gründer & Normale Mitglieder) enthält */
 .mitglieder-container {
     display: flex;
     justify-content: center;
@@ -170,6 +190,7 @@ body {
     margin-top: 20px;
 }
 
+/* Einzelne Mitgliederbereiche (Boxen) */
 .gründer, .normale-mitglieder {
     background: #3c3c3c;
     padding: 20px;
@@ -180,7 +201,9 @@ body {
     text-align: center;
 }
 
-/* Formular */
+/* Formular für das Hinzufügen von Mitgliedern */
+
+/* Eingabefelder */
 .mitglied-form input {
     display: block;
     width: 90%;
@@ -193,6 +216,7 @@ body {
     text-align: center;
 }
 
+/* Button im Formular */
 .mitglied-form button {
     padding: 10px 20px;
     background: #ff6f61;
@@ -207,12 +231,17 @@ body {
     background: #e63946;
 }
 
-/* Mitgliederliste */
+/* ==========================================================================
+   MITGLIEDERLISTE & EINZELNE MITGLIEDER
+   ========================================================================== */
+
+/* Grundlegendes List-Reset */
 ul {
     list-style: none;
     padding: 0;
 }
 
+/* Allgemeine Listenelemente (Mitgliederliste) */
 li {
     background: #444;
     padding: 10px;
@@ -223,7 +252,34 @@ li {
     align-items: center;
 }
 
-/* Löschen-Button */
+/* Individuelle Mitgliederkarte (für Normale Mitglieder) */
+.mitglied-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #444;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Container für Mitgliederinformationen */
+.mitglied-info {
+    text-align: left;
+}
+
+.mitglied-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #ff6f61;
+}
+
+.mitglied-info p {
+    margin: 5px 0 0;
+    color: #ddd;
+}
+
+/* Löschen-Button für Mitglieder */
 button.löschen {
     padding: 5px 10px;
     background: red;
@@ -237,52 +293,77 @@ button.löschen:hover {
     background: darkred;
 }
 
-/* Responsive Design */
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE UND TABLET)
+   ========================================================================== */
 @media (max-width: 768px) {
+    /* Navigation: Elemente werden gestapelt */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 10px;
+        min-height: auto;
+    }
+    
+    /* Datum & Countdown: Positionierung anpassen */
+    .date-container {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    
+    /* Datepicker: Position beibehalten, aber relative Anordnung */
+    #date-picker {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Menü-Container: Positionierung relativ, damit es unter das Datum rutscht */
+    .menu-container {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 10px;
+    }
+    
+    /* Hauptcontainer: Weniger Abstand und angepasste Breite */
+    .container {
+        margin-top: 80px;
+        padding: 20px;
+        width: 95%;
+    }
+    
+    /* Mitgliederbereiche: Vertikal statt nebeneinander */
     .mitglieder-container {
         flex-direction: column;
         align-items: center;
     }
+    
     .gründer, .normale-mitglieder {
         width: 90%;
     }
+    
+    /* Button-Container: Buttons untereinander anordnen */
     .button-container {
         flex-direction: column;
+        gap: 10px;
     }
-    .navbar {
-        flex-direction: column;
+    
+    /* Menü-Icon: Größeres Touch-Ziel */
+    .menu-icon {
+        width: 35px;
+        height: 28px;
+        padding: 10px;
     }
-}
-
-/* ===================================== */
-/* Gestaltung für die einzelnen Mitglieder */
-/* ===================================== */
-
-/* Jedes Listenelement bekommt etwas Abstand und wirkt wie eine „Karte“ */
-.mitglied-item {
-    display: flex;                   /* Inhalt nebeneinander (Text links, Button rechts) */
-    justify-content: space-between; 
-    align-items: center;
-    background: #444;               /* dunkler Hintergrund abgesetzt vom Container */
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-}
-
-/* Der Teil, wo die Member-Daten stehen */
-.mitglied-info {
-    text-align: left;               /* Überschriften & Text linksbündig */
-}
-
-/* Der Name auffälliger als Titel */
-.mitglied-info h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #ff6f61;
-}
-
-/* Die Unterzeilen etwas dezenter */
-.mitglied-info p {
-    margin: 5px 0 0;
-    color: #ddd;
+    
+    .menu-icon div {
+        height: 4px;
+    }
 }
