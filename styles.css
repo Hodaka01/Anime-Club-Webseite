@@ -11,7 +11,7 @@ body {
 
 /* Navigation */
 .navbar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -43,7 +43,7 @@ body {
 
 /* Datum & Countdown */
 .date-container {
-    position: relative;
+    position: absolute;
     flex-grow: 1;
     display: flex;         /* Macht aus .date-container einen Flex-Container */
     align-items: center;   /* Zentriert den Inhalt vertikal */
