@@ -11,43 +11,42 @@ body {
 
 /* Navigation */
 .navbar {
+    position: relative; /* Bezugspunkt für absolute Positionierung der Kinder */
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Elemente werden an den Enden positioniert */
+    justify-content: space-between; /* Elemente an den Enden */
     padding: 10px 20px;
     background: #212121;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     z-index: 100;
     min-height: 80px;
-    position: relative;
 }
-
 
 /* Styling für den Datepicker im Datumcontainer */
 #date-picker {
-  display: none;  /* Anfangs versteckt */
-  background: #282828;
-  border: 1px solid #555;
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  position: absolute;
-  top: 100%;         /* Direkt unterhalb des angezeigten Datums */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 200;      /* Damit er vor anderen Elementen liegt */
-  width: auto;       /* Oder eine feste Breite, falls gewünscht */
+    display: none;  /* Anfangs versteckt */
+    background: #282828;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    position: absolute;
+    top: 100%;         /* Direkt unterhalb des angezeigten Datums */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;      /* Damit er vor anderen Elementen liegt */
+    width: auto;       /* Oder eine feste Breite, falls gewünscht */
 }
 
-/* Datum & Countdown */
+/* Datum & Countdown – exakt in der Mitte der Navbar */
 .date-container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Datum oben, Countdown darunter */
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -63,12 +62,12 @@ body {
     margin-top: 5px;
 }
 
-/* Menü Container – rechts positioniert */
+/* Menü Container – absolut rechts positioniert */
 .menu-container {
     position: absolute;
-    right: 20px;                  
-    top: 50%;                     
-    transform: translateY(-50%);  
+    right: 20px;              /* Abstand vom rechten Rand */
+    top: 50%;                 /* Vertikal zentriert */
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -109,11 +108,9 @@ body {
     min-width: 150px;
 }
 
-/* Wenn `.show` aktiv ist */
 .dropdown.show {
     display: block; /* Menü wird sichtbar */
 }
-
 
 /* Dropdown-Links */
 .dropdown a {
@@ -124,19 +121,8 @@ body {
     font-size: 16px;
 }
 
-/* Hintergrund beim Hover */
 .dropdown a:hover {
     background-color: #383838;
-}
-
-/* ✅ Menü bleibt sichtbar, wenn die Klasse 'show' aktiv ist */
-.menu-container.show .dropdown {
-    display: block;
-}
-
-.menu-container .menu-icon {
-    cursor: pointer;
-    padding: 10px; /* Erhöht den Klickbereich */
 }
 
 /* Hauptinhalt */
@@ -257,15 +243,12 @@ button.löschen:hover {
         flex-direction: column;
         align-items: center;
     }
-
     .gründer, .normale-mitglieder {
         width: 90%;
     }
-
     .button-container {
         flex-direction: column;
     }
-
     .navbar {
         flex-direction: column;
     }
