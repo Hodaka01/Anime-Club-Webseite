@@ -134,13 +134,6 @@ body {
     display: block;
 }
 
-/* Verhindert, dass das Menü sofort verschwindet, wenn man von der Maus über das Icon zum Menü fährt */
-.menu-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
 .menu-container .menu-icon {
     cursor: pointer;
     padding: 10px; /* Erhöht den Klickbereich */
