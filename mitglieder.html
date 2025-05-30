@@ -2,47 +2,45 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Mitglieder des Anime Clubs">
   <title>Mitglieder - Anime Club</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Supabase laden (wichtig!) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Supabase UMD-Build -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/index.js"></script>
   <!-- Haupt-JavaScript -->
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- NAVIGATION (identisch zu index.html) -->
   <header class="navbar">
-    <!-- Logo -->
     <div class="logo">
       <img src="images/LOGOJPG" alt="Anime Club Logo">
     </div>
-    <!-- Datum & Countdown -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
-      <input type="date" id="date-picker" style="display: none;">
+      <input type="date" id="date-picker">
       <p id="countdown"></p>
     </div>
-    <!-- Menü -->
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="dropdown">
+      <nav class="dropdown">
         <a href="index.html">Home</a>
         <a href="mitglieder.html">Mitglieder</a>
-      </div>
+      </nav>
     </div>
   </header>
-  <!-- Mitgliederbereich -->
+
+  <!-- MITGLIEDERBEREICH -->
   <main class="container">
     <h1>Mitgliederliste</h1>
     <div class="mitglieder-container">
-      <!-- Gründer Mitglieder -->
-      <div class="gründer">
+      <!-- Gründer -->
+      <section class="gründer">
         <h2>Gründer</h2>
         <ul>
           <li>Anas</li>
@@ -50,19 +48,18 @@
           <li>Anny</li>
           <li>Jenny</li>
         </ul>
-      </div>
+      </section>
       <!-- Normale Mitglieder -->
-      <div class="normale-mitglieder">
+      <section class="normale-mitglieder">
         <h2>Normale Mitglieder</h2>
         <ul id="mitglied-liste"></ul>
-        <!-- Formular zum Hinzufügen eines neuen Mitglieds -->
         <div class="mitglied-form">
           <input type="text" id="mitglied-name" placeholder="Name">
           <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
           <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
           <button onclick="hinzufuegenMitglied()">Hinzufügen</button>
         </div>
-      </div>
+      </section>
     </div>
   </main>
 </body>
