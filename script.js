@@ -1,12 +1,16 @@
-// =============== Supabase-Setup ================
+// =============================================
+//  Supabase Setup
+// =============================================
 const SUPABASE_URL = "https://pnhtasbeulnqcpvvlcvz.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBuaHRhc2JldWxucWNwdnZsY3Z6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MzEyNDcsImV4cCI6MjA2NDIwNzI0N30.D5vqyDHJgh3U4gOAWCRoRYec7oGvEfKw846riH_tsnA";
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// =============== DOMContentLoaded ================
+// =============================================
+//  Main Logik nach DOM geladen
+// =============================================
 document.addEventListener("DOMContentLoaded", () => {
   // ============================
-  // Element-Selektoren
+  //  Element-Selektoren
   // ============================
   const eventDateDisplay = document.getElementById("event-date");
   const datePicker = document.getElementById("date-picker");
@@ -14,22 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const mitgliedListe = document.getElementById("mitglied-liste");
 
   // ============================
-  // Datum & Countdown (mit Supabase)
+  //  Datum & Countdown (Supabase)
   // ============================
-
-  // Eintrag aus Supabase holen, eventdate wird als String geliefert
+  // Eventdatum holen
   const getEventDateFromSupabase = async () => {
     const { data, error } = await supabase.from("eventdaten").select("*").limit(1).single();
-    if (error || !data) {
-      // Fallback auf zweiter Sonntag falls Fehler
-      return calculateNextSecondSunday();
-    }
+    if (error || !data) return calculateNextSecondSunday();
     return data.eventdate;
   };
 
-  // In Supabase updaten (nur id=1)
+  // Eventdatum setzen
   const setEventDateInSupabase = async (date) => {
-    let { data, error } = await supabase.from("eventdaten").select("*").limit(1).single();
+    let { data } = await supabase.from("eventdaten").select("*").limit(1).single();
     if (data && data.id) {
       await supabase.from("eventdaten").update({ eventdate: date }).eq("id", data.id);
     } else {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Zweiter Sonntag im Monat berechnen
+  // 2. Sonntag im Monat als Fallback
   const calculateNextSecondSunday = () => {
     const today = new Date();
     const month = today.getMonth();
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return new Date(year, month, secondSunday).toISOString().slice(0, 10);
   };
 
-  // Countdown aktualisieren
+  // Countdown-Anzeige
   const updateCountdown = (eventDate) => {
     if (!countdownDisplay) return;
     const today = new Date();
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
   };
 
-  // Anzeige aktualisieren
+  // Datum aktualisieren (anzeige + datepicker + countdown)
   const updateDateDisplay = async () => {
     if (!eventDateDisplay) return;
     const eventDate = await getEventDateFromSupabase();
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
   };
 
+  // Listener für Datepicker-Änderung
   if (datePicker) {
     datePicker.addEventListener("change", async function () {
       await setEventDateInSupabase(this.value);
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ============================
-  // Dropdown-Menü (immer sicher!)
+  //  Dropdown-Menü (robust)
   // ============================
   const menuContainer = document.querySelector(".menu-container");
   const menuIcon = document.querySelector(".menu-icon");
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ============================
-  // Mitgliederverwaltung mit Supabase
+  //  Mitgliederverwaltung (Supabase)
   // ============================
   const loadMitglieder = async () => {
     if (!mitgliedListe) return;
@@ -184,6 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // Hinzufügen eines Mitglieds
   window.hinzufuegenMitglied = async () => {
     const name = document.getElementById("mitglied-name") ? document.getElementById("mitglied-name").value.trim() : "";
     const genre = document.getElementById("mitglied-genre") ? document.getElementById("mitglied-genre").value.trim() : "";
@@ -198,5 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Mitglieder beim Laden anzeigen
   if (mitgliedListe) loadMitglieder();
 });
