@@ -6,23 +6,25 @@
   <meta name="description" content="Anime Club Webseite">
   <title>Anime Club Webseite</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Supabase laden -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Haupt-JavaScript -->
   <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
   <header class="navbar">
-    <!-- Logo (innerhalb von navbar, links) -->
+    <!-- Logo -->
     <div class="logo">
       <img src="images/LOGOJPG" alt="Anime Club Logo">
     </div>
-    <!-- Datum & Countdown (zentriert) -->
+    <!-- Datum & Countdown -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
       <input type="date" id="date-picker" style="display: none;">
       <p id="countdown"></p>
     </div>
-    <!-- Menü Container (rechts) -->
+    <!-- Menü -->
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
@@ -42,7 +44,7 @@
     <h2>Hallo Clubmitglieder!</h2>
     <br>
     <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
-    <!-- Buttons für Regeln & Historie -->
+    <!-- Buttons -->
     <div class="button-container">
       <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.d6pnuaaoc7b6" class="button">Regeln</a>
       <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Historie</a>
