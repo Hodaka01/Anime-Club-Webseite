@@ -2,17 +2,17 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Anime Club Webseite">
   <title>Anime Club Webseite</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Supabase laden -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Supabase UMD-Build (liefert globales `supabase`) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/index.js"></script>
   <!-- Haupt-JavaScript -->
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- NAVIGATION -->
   <header class="navbar">
     <!-- Logo -->
     <div class="logo">
@@ -21,32 +21,30 @@
     <!-- Datum & Countdown -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
-      <input type="date" id="date-picker" style="display: none;">
+      <input type="date" id="date-picker">
       <p id="countdown"></p>
     </div>
-    <!-- Menü -->
+    <!-- Hamburger & Dropdown -->
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="dropdown">
+      <nav class="dropdown">
         <a href="index.html">Home</a>
         <a href="mitglieder.html">Mitglieder</a>
-      </div>
+      </nav>
     </div>
   </header>
-  <!-- Hauptinhalt -->
+
+  <!-- HAUPTINHALT -->
   <main class="container">
     <h1>Anime Club Webseite</h1>
-    <br>
     <h2>Hallo Clubmitglieder!</h2>
-    <br>
     <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
-    <!-- Buttons -->
     <div class="button-container">
-      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.d6pnuaaoc7b6" class="button">Regeln</a>
+      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Regeln</a>
       <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Historie</a>
     </div>
   </main>
