@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Anime Club Webseite">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anime Club Webseite" />
   <title>Anime Club Webseite</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Supabase UMD-Build (liefert globales `supabase`) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/index.js"></script>
-  <!-- Haupt-JavaScript -->
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Wir laden nur noch ein Modul-Script für alles -->
+  <script type="module" src="script.js"></script>
 </head>
 <body>
   <!-- NAVIGATION -->
   <header class="navbar">
-    <!-- Logo -->
     <div class="logo">
-      <img src="images/LOGOJPG" alt="Anime Club Logo">
+      <img src="images/LOGOJPG" alt="Anime Club Logo" />
     </div>
-    <!-- Datum & Countdown -->
+
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
-      <input type="date" id="date-picker">
+      <input type="date" id="date-picker" />
       <p id="countdown"></p>
     </div>
-    <!-- Hamburger & Dropdown -->
+
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
@@ -44,8 +42,16 @@
     <h2>Hallo Clubmitglieder!</h2>
     <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
     <div class="button-container">
-      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Regeln</a>
-      <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit" class="button">Historie</a>
+      <a
+        href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit"
+        class="button"
+        >Regeln</a
+      >
+      <a
+        href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit"
+        class="button"
+        >Historie</a
+      >
     </div>
   </main>
 </body>
