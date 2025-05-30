@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // In Supabase updaten (nur id=1)
   const setEventDateInSupabase = async (date) => {
-    // Suche ob schon ein Datensatz existiert
     let { data, error } = await supabase.from("eventdaten").select("*").limit(1).single();
     if (data && data.id) {
       await supabase.from("eventdaten").update({ eventdate: date }).eq("id", data.id);
@@ -50,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Countdown aktualisieren
   const updateCountdown = (eventDate) => {
+    if (!countdownDisplay) return;
     const today = new Date();
     const targetDate = new Date(eventDate);
     const diffTime = targetDate - today;
@@ -59,17 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Anzeige aktualisieren
   const updateDateDisplay = async () => {
+    if (!eventDateDisplay) return;
     const eventDate = await getEventDateFromSupabase();
-    if (eventDateDisplay) {
-      eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
-      if (datePicker) datePicker.value = eventDate;
-      if (countdownDisplay) updateCountdown(eventDate);
-    }
+    eventDateDisplay.textContent = new Date(eventDate).toLocaleDateString("de-DE", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    if (datePicker) datePicker.value = eventDate;
+    updateCountdown(eventDate);
   };
 
   // Datepicker öffnen/schließen
@@ -86,24 +85,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Initiales Datum aus Supabase holen oder setzen
-  (async () => {
-    const { data, error } = await supabase.from("eventdaten").select("*").limit(1).single();
-    if (!data || error) {
-      const defaultDate = calculateNextSecondSunday();
-      await setEventDateInSupabase(defaultDate);
-    }
-    updateDateDisplay();
-  })();
+  if (eventDateDisplay) {
+    (async () => {
+      const { data, error } = await supabase.from("eventdaten").select("*").limit(1).single();
+      if (!data || error) {
+        const defaultDate = calculateNextSecondSunday();
+        await setEventDateInSupabase(defaultDate);
+      }
+      updateDateDisplay();
+    })();
+  }
 
   // ============================
-  // Dropdown-Menü (wie gehabt)
+  // Dropdown-Menü (immer sicher!)
   // ============================
   const menuContainer = document.querySelector(".menu-container");
   const menuIcon = document.querySelector(".menu-icon");
   const dropdown = document.querySelector(".dropdown");
   let clicked = false;
-  
-  if (menuIcon && dropdown && menuContainer) {
+
+  if (menuContainer && menuIcon && dropdown) {
     menuIcon.addEventListener("click", (event) => {
       event.stopPropagation();
       clicked = !clicked;
@@ -113,14 +114,21 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdown.classList.remove("show");
       }
     });
+
     menuContainer.addEventListener("mouseenter", () => {
       dropdown.classList.add("show");
     });
+
     menuContainer.addEventListener("mouseleave", (event) => {
-      if (!clicked && !menuContainer.contains(event.relatedTarget) && !dropdown.contains(event.relatedTarget)) {
+      if (
+        !clicked &&
+        (!menuContainer.contains(event.relatedTarget) &&
+        !dropdown.contains(event.relatedTarget))
+      ) {
         dropdown.classList.remove("show");
       }
     });
+
     document.addEventListener("click", (event) => {
       if (!menuContainer.contains(event.target)) {
         dropdown.classList.remove("show");
@@ -177,16 +185,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.hinzufuegenMitglied = async () => {
-    const name = document.getElementById("mitglied-name").value.trim();
-    const genre = document.getElementById("mitglied-genre").value.trim();
-    const anime = document.getElementById("mitglied-anime").value.trim();
+    const name = document.getElementById("mitglied-name") ? document.getElementById("mitglied-name").value.trim() : "";
+    const genre = document.getElementById("mitglied-genre") ? document.getElementById("mitglied-genre").value.trim() : "";
+    const anime = document.getElementById("mitglied-anime") ? document.getElementById("mitglied-anime").value.trim() : "";
 
     if (name && genre && anime) {
       await supabase.from("mitglieder").insert([{ name, genre, anime }]);
       loadMitglieder();
-      document.getElementById("mitglied-name").value = "";
-      document.getElementById("mitglied-genre").value = "";
-      document.getElementById("mitglied-anime").value = "";
+      if (document.getElementById("mitglied-name")) document.getElementById("mitglied-name").value = "";
+      if (document.getElementById("mitglied-genre")) document.getElementById("mitglied-genre").value = "";
+      if (document.getElementById("mitglied-anime")) document.getElementById("mitglied-anime").value = "";
     }
   };
 
