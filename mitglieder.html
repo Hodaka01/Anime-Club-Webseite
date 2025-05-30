@@ -6,24 +6,25 @@
   <meta name="description" content="Mitglieder des Anime Clubs">
   <title>Mitglieder - Anime Club</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Supabase laden (wichtig!) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Haupt-JavaScript -->
   <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
   <header class="navbar">
-    <!-- Logo (innerhalb von navbar, links) -->
+    <!-- Logo -->
     <div class="logo">
       <img src="images/LOGOJPG" alt="Anime Club Logo">
     </div>
-    
-    <!-- Datum & Countdown (zentriert) -->
+    <!-- Datum & Countdown -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
       <input type="date" id="date-picker" style="display: none;">
       <p id="countdown"></p>
     </div>
-  
-    <!-- Menü Container (rechts) -->
+    <!-- Menü -->
     <div class="menu-container">
       <div class="menu-icon">
         <div></div>
@@ -36,7 +37,6 @@
       </div>
     </div>
   </header>
-
   <!-- Mitgliederbereich -->
   <main class="container">
     <h1>Mitgliederliste</h1>
@@ -51,12 +51,10 @@
           <li>Jenny</li>
         </ul>
       </div>
-
       <!-- Normale Mitglieder -->
       <div class="normale-mitglieder">
         <h2>Normale Mitglieder</h2>
         <ul id="mitglied-liste"></ul>
-
         <!-- Formular zum Hinzufügen eines neuen Mitglieds -->
         <div class="mitglied-form">
           <input type="text" id="mitglied-name" placeholder="Name">
