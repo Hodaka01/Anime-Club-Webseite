@@ -9,6 +9,7 @@ const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 //  Main Logik nach DOM geladen
 // =============================================
 document.addEventListener("DOMContentLoaded", () => {
+
   // ============================
   //  Element-Selektoren
   // ============================
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     countdownDisplay.textContent = `Noch ${daysRemaining} Tage bis zum Event!`;
   };
 
-  // Datum aktualisieren (anzeige + datepicker + countdown)
+  // Datum aktualisieren (Anzeige + Datepicker + Countdown)
   const updateDateDisplay = async () => {
     if (!eventDateDisplay) return;
     const eventDate = await getEventDateFromSupabase();
@@ -98,43 +99,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ============================
-  //  Dropdown-Menü (robust)
+  //  Dropdown-Menü (klickbasiert und robust)
   // ============================
-  const menuContainer = document.querySelector(".menu-container");
   const menuIcon = document.querySelector(".menu-icon");
   const dropdown = document.querySelector(".dropdown");
-  let clicked = false;
+  let dropdownOpen = false;
 
-  if (menuContainer && menuIcon && dropdown) {
-    menuIcon.addEventListener("click", (event) => {
-      event.stopPropagation();
-      clicked = !clicked;
-      if (clicked) {
-        dropdown.classList.add("show");
-      } else {
+  if (menuIcon && dropdown) {
+    menuIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdownOpen = !dropdownOpen;
+      dropdown.classList.toggle("show", dropdownOpen);
+    });
+
+    document.addEventListener("click", () => {
+      if (dropdownOpen) {
         dropdown.classList.remove("show");
+        dropdownOpen = false;
       }
     });
 
-    menuContainer.addEventListener("mouseenter", () => {
-      dropdown.classList.add("show");
-    });
-
-    menuContainer.addEventListener("mouseleave", (event) => {
-      if (
-        !clicked &&
-        (!menuContainer.contains(event.relatedTarget) &&
-        !dropdown.contains(event.relatedTarget))
-      ) {
-        dropdown.classList.remove("show");
-      }
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!menuContainer.contains(event.target)) {
-        dropdown.classList.remove("show");
-        clicked = false;
-      }
+    dropdown.addEventListener("click", (e) => {
+      e.stopPropagation();
     });
   }
 
