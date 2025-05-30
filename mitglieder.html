@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Mitglieder des Anime Clubs">
-  <title>Mitglieder - Anime Club</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Supabase UMD-Build -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/index.js"></script>
-  <!-- Haupt-JavaScript -->
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mitglieder des Anime Clubs" />
+  <title>Mitglieder – Anime Club</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="script.js"></script>
 </head>
 <body>
-  <!-- NAVIGATION (identisch zu index.html) -->
+  <!-- NAVIGATION (gleich wie in index.html) -->
   <header class="navbar">
     <div class="logo">
-      <img src="images/LOGOJPG" alt="Anime Club Logo">
+      <img src="images/LOGOJPG" alt="Anime Club Logo" />
     </div>
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
-      <input type="date" id="date-picker">
+      <input type="date" id="date-picker" />
       <p id="countdown"></p>
     </div>
     <div class="menu-container">
@@ -35,11 +32,10 @@
     </div>
   </header>
 
-  <!-- MITGLIEDERBEREICH -->
+  <!-- MITGLIEDER-BEREICH -->
   <main class="container">
     <h1>Mitgliederliste</h1>
     <div class="mitglieder-container">
-      <!-- Gründer -->
       <section class="gründer">
         <h2>Gründer</h2>
         <ul>
@@ -49,14 +45,13 @@
           <li>Jenny</li>
         </ul>
       </section>
-      <!-- Normale Mitglieder -->
       <section class="normale-mitglieder">
         <h2>Normale Mitglieder</h2>
         <ul id="mitglied-liste"></ul>
         <div class="mitglied-form">
-          <input type="text" id="mitglied-name" placeholder="Name">
-          <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres">
-          <input type="text" id="mitglied-anime" placeholder="Lieblingsanime">
+          <input type="text" id="mitglied-name" placeholder="Name" />
+          <input type="text" id="mitglied-genre" placeholder="Lieblingsgenres" />
+          <input type="text" id="mitglied-anime" placeholder="Lieblingsanime" />
           <button onclick="hinzufuegenMitglied()">Hinzufügen</button>
         </div>
       </section>
