@@ -6,6 +6,7 @@
   <meta name="description" content="Anime Club Webseite">
   <title>Anime Club Webseite</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -15,14 +16,12 @@
     <div class="logo">
       <img src="images/LOGOJPG" alt="Anime Club Logo">
     </div>
-    
     <!-- Datum & Countdown (zentriert) -->
     <div class="date-container">
       <span id="event-date" onclick="toggleDatePicker()"></span>
       <input type="date" id="date-picker" style="display: none;">
       <p id="countdown"></p>
     </div>
-  
     <!-- Menü Container (rechts) -->
     <div class="menu-container">
       <div class="menu-icon">
@@ -36,7 +35,6 @@
       </div>
     </div>
   </header>
-        
   <!-- Hauptinhalt -->
   <main class="container">
     <h1>Anime Club Webseite</h1>
@@ -44,7 +42,6 @@
     <h2>Hallo Clubmitglieder!</h2>
     <br>
     <p>Willkommen auf der offiziellen Webseite des Anime Clubs!</p>
-
     <!-- Buttons für Regeln & Historie -->
     <div class="button-container">
       <a href="https://docs.google.com/document/d/1w8EJo5GA3NcuZlHRPgInQkRITC8mClfMO3SEhgB34Po/edit?tab=t.d6pnuaaoc7b6" class="button">Regeln</a>
